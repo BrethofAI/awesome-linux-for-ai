@@ -98,19 +98,6 @@ making CUDA toolchain experiments safe and reversible.
   gap. Will move to S after we have day-to-day receipts; until then,
   promising but unproven.
 
-### Pop!_OS GNOME (22.04 LTS) — 🆕 2/5 ⚙️ 5/5 🎮 5/5 🧱 4/5 ♻️ 3/5
-
-System76's GNOME edition. The NVIDIA ISO ships
-`nvidia-driver-575` plus `linux-system76` kernel; CUDA setup is one
-`apt install system76-cuda-latest` away.
-
-- **Site:** [pop.system76.com](https://pop.system76.com)
-- **Why A:** First-party hardware support. System76 sells AI
-  workstations on this distro; the proprietary-driver path Just Works
-  out of the box.
-- **Caveat:** Kernel age (5.x → 6.8 HWE) hurts on Blackwell + RDNA 4.
-  See the COSMIC variant below before committing.
-
 ### Ubuntu 24.04 LTS — 🆕 3/5 ⚙️ 5/5 🎮 5/5 🧱 5/5 ♻️ 4/5
 
 Industry default. Most AI tools have an "ubuntu 22.04/24.04 install
@@ -161,23 +148,30 @@ identical environment six months later.
 
 ## Tier B — Solid trade-offs
 
-### Pop!_OS COSMIC (24.04 alpha / 25.04) — 🆕 4/5 ⚙️ 4/5 🎮 4/5 🧱 2/5 ♻️ 3/5
+### Pop!_OS COSMIC (24.04 alpha / 25.04) — 🆕 4/5 ⚙️ 3/5 🎮 3/5 🧱 2/5 ♻️ 3/5
 
-System76's own next-generation desktop on Pop!_OS. Rust-based, ambitious,
-visually polished. As of 2026 the COSMIC desktop still ships with
-crashes and regressions that disrupt long-running GPU sessions —
-exactly the workload AI users hit hardest.
+System76's own next-generation desktop on Pop!_OS. Rust-based,
+ambitious, visually polished. The classic Pop!_OS GNOME edition has
+effectively been retired — System76's roadmap is COSMIC-only, so this
+is the only Pop!_OS variant you can install fresh today.
+
+As of 2026 the COSMIC desktop still ships with crashes, NVIDIA-driver
+flakiness, and regressions that disrupt long-running GPU sessions —
+exactly the workload AI users hit hardest. Promising future, not a
+reliable present.
 
 - **Site:** [pop.system76.com](https://pop.system76.com)
 - **Why B (not S):** Good idea, ship date pulled in too aggressively.
   Daily-driver complaints across [r/pop_os](https://www.reddit.com/r/pop_os/)
   and the [System76 chat](https://chat.system76.com/community/channels/cosmic)
-  cluster around compositor crashes, multi-monitor regressions, and
-  Wayland session loss. None of this is fatal — recovery is a relog —
-  but it disqualifies the COSMIC variant from "drop in and run".
-- **Recommendation:** If you want System76 hardware support today,
-  use [Pop!_OS GNOME (Tier A)](#popos-gnome-2204-lts--🆕-25-⚙️-55-🎮-55-🧱-45-♻️-35).
-  Revisit COSMIC once 1.0 ships stable.
+  cluster around compositor crashes, multi-monitor regressions, NVIDIA
+  driver edge cases, and Wayland session loss. None of this is fatal —
+  recovery is a relog — but it disqualifies COSMIC from "drop in and
+  run" for AI work where a long-running training job that crashes is
+  hours of wall-clock lost.
+- **Recommendation:** Watch this space. When COSMIC 1.0 ships stable
+  with the NVIDIA driver matrix solid, it has a real shot at Tier S.
+  Until then, run something else for production AI work.
 
 ### Debian 12 (Bookworm) — 🆕 2/5 ⚙️ 4/5 🎮 4/5 🧱 5/5 ♻️ 4/5
 
