@@ -54,6 +54,7 @@ Each distro is rated on five axes. Higher is better.
 - [Tier B — Solid trade-offs](#tier-b--solid-trade-offs)
 - [Tier C — Only with a reason](#tier-c--only-with-a-reason)
 - [Tier D — Avoid for AI work](#tier-d--avoid-for-ai-work)
+- [Community-recommended (untested by us)](#community-recommended-untested-by-us)
 - [Specialised / Niche](#specialised--niche)
 - [Container-only / atomic distros](#container-only--atomic-distros)
 - [What we test](#what-we-test)
@@ -76,27 +77,13 @@ via `cachyos-cli` setup; CUDA `13.1` builds available.
 
 > **Why CachyOS sits alone in S.** Tier S is what we'll bet our own
 > production AI workloads on, today. We've validated it daily on the
-> rig described in [What we test](#what-we-test). Other strong
-> candidates (Bazzite, Pop!_OS) are below in A — promising but not yet
-> field-validated for the same workloads, or with known-unstable
-> components in 2026.
+> rig described in [What we test](#what-we-test). Other promising
+> candidates are listed elsewhere with that distinction made explicit:
+> Bazzite in [Community-recommended (untested by us)](#community-recommended-untested-by-us)
+> because we haven't lived on it yet, Pop!_OS COSMIC in Tier B because
+> of compositor-stability issues we *have* seen on the rig.
 
 ## Tier A — Great with a config step or two
-
-### Bazzite — 🆕 5/5 ⚙️ 4/5 🎮 4/5 🧱 5/5 ♻️ 5/5
-
-Fedora-Atomic + COSMIC / KDE images with NVIDIA drivers preinstalled
-(both proprietary and open variants). Container-native (rpm-ostree),
-making CUDA toolchain experiments safe and reversible.
-
-- **Site:** [bazzite.gg](https://bazzite.gg)
-- **Why A:** Atomic = roll back any update in one reboot. The
-  "Bazzite-DX" developer-focused variant looks best-in-class on paper
-  for AI on immutable filesystems.
-- **Caveat:** We have not yet field-validated Bazzite-DX on a
-  production AI workstation. Marketing-grade vs measured is a real
-  gap. Will move to S after we have day-to-day receipts; until then,
-  promising but unproven.
 
 ### Ubuntu 24.04 LTS — 🆕 3/5 ⚙️ 5/5 🎮 5/5 🧱 5/5 ♻️ 4/5
 
@@ -249,6 +236,33 @@ their system tuning is for offensive security workloads.
 - **Sites:** [kali.org](https://kali.org) · [parrotsec.org](https://parrotsec.org)
 - **Why D:** Wrong tool for the job. Don't pick for AI; if you need
   pentest tools too, dual-boot or VM them.
+
+## Community-recommended (untested by us)
+
+Distros widely praised in the AI/Linux community that we haven't yet
+field-validated on our own [test rig](#what-we-test). Listed here
+without a tier rating to keep the methodology honest: a tier is
+something we earn by living on the distro. We'll move entries up into
+the tier list once we have day-to-day receipts.
+
+### Bazzite — Fedora-Atomic with NVIDIA preinstalled
+
+Fedora-Atomic + COSMIC / KDE images with NVIDIA drivers preinstalled
+(both proprietary and open variants). Container-native (rpm-ostree),
+making CUDA toolchain experiments safe and reversible. The
+"Bazzite-DX" developer-focused variant looks best-in-class on paper
+for AI on immutable filesystems.
+
+- **Site:** [bazzite.gg](https://bazzite.gg)
+- **Why community-recommended:** Atomic rollback in one reboot,
+  preinstalled NVIDIA drivers, declarative-ish config. The
+  immutable-host + containerised-CUDA pattern is what serious AI ops
+  teams converge on for production fleets.
+- **Why not yet tier-rated:** We've been daily-driving CachyOS and
+  haven't moved an AI workstation to Bazzite-DX yet. Marketing-grade
+  vs measured is a real gap and we won't rate it until we've lived on
+  it through actual training runs and driver upgrades. PRs welcome
+  from anyone running it on Blackwell with NVIDIA Container Toolkit.
 
 ## Specialised / Niche
 
