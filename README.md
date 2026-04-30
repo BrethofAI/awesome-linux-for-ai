@@ -56,6 +56,7 @@ Each distro is rated on five axes. Higher is better.
 - [Tier D — Avoid for AI work](#tier-d--avoid-for-ai-work)
 - [Specialised / Niche](#specialised--niche)
 - [Container-only / atomic distros](#container-only--atomic-distros)
+- [What we test](#what-we-test)
 
 ## Tier S — Drop in and run
 
@@ -73,31 +74,42 @@ via `cachyos-cli` setup; CUDA `13.1` builds available.
 - **Caveat:** Rolling means the occasional `pacman -Syu` regression.
   Use `snapper-tools` (default) for one-command rollback.
 
-### Bazzite — 🆕 5/5 ⚙️ 5/5 🎮 5/5 🧱 5/5 ♻️ 5/5
+> **Why CachyOS sits alone in S.** Tier S is what we'll bet our own
+> production AI workloads on, today. We've validated it daily on the
+> rig described in [What we test](#what-we-test). Other strong
+> candidates (Bazzite, Pop!_OS) are below in A — promising but not yet
+> field-validated for the same workloads, or with known-unstable
+> components in 2026.
+
+## Tier A — Great with a config step or two
+
+### Bazzite — 🆕 5/5 ⚙️ 4/5 🎮 4/5 🧱 5/5 ♻️ 5/5
 
 Fedora-Atomic + COSMIC / KDE images with NVIDIA drivers preinstalled
 (both proprietary and open variants). Container-native (rpm-ostree),
 making CUDA toolchain experiments safe and reversible.
 
 - **Site:** [bazzite.gg](https://bazzite.gg)
-- **Why S:** Atomic = roll back any update in one reboot. The
-  "Bazzite-DX" developer-focused variant is best-in-class for AI on
-  immutable filesystems.
+- **Why A:** Atomic = roll back any update in one reboot. The
+  "Bazzite-DX" developer-focused variant looks best-in-class on paper
+  for AI on immutable filesystems.
+- **Caveat:** We have not yet field-validated Bazzite-DX on a
+  production AI workstation. Marketing-grade vs measured is a real
+  gap. Will move to S after we have day-to-day receipts; until then,
+  promising but unproven.
 
-### Pop!_OS COSMIC (24.04 alpha / 25.04) — 🆕 4/5 ⚙️ 5/5 🎮 5/5 🧱 4/5 ♻️ 3/5
+### Pop!_OS GNOME (22.04 LTS) — 🆕 2/5 ⚙️ 5/5 🎮 5/5 🧱 4/5 ♻️ 3/5
 
-System76's own. The NVIDIA ISO ships `nvidia-driver-575` plus `linux-system76`
-kernel; CUDA setup is one `apt install system76-cuda-latest` away. The
-new COSMIC desktop (Rust-based) is the desktop alternative for those
-who don't want GNOME or KDE.
+System76's GNOME edition. The NVIDIA ISO ships
+`nvidia-driver-575` plus `linux-system76` kernel; CUDA setup is one
+`apt install system76-cuda-latest` away.
 
 - **Site:** [pop.system76.com](https://pop.system76.com)
-- **Why S:** First-party hardware support. System76 sells AI
-  workstations on this distro; bug-driver loops are short.
-- **Caveat:** COSMIC desktop still maturing as of 2026. Pop GNOME
-  variant is the safer bet for strict stability.
-
-## Tier A — Great with a config step or two
+- **Why A:** First-party hardware support. System76 sells AI
+  workstations on this distro; the proprietary-driver path Just Works
+  out of the box.
+- **Caveat:** Kernel age (5.x → 6.8 HWE) hurts on Blackwell + RDNA 4.
+  See the COSMIC variant below before committing.
 
 ### Ubuntu 24.04 LTS — 🆕 3/5 ⚙️ 5/5 🎮 5/5 🧱 5/5 ♻️ 4/5
 
@@ -148,6 +160,24 @@ identical environment six months later.
   reproducibility.
 
 ## Tier B — Solid trade-offs
+
+### Pop!_OS COSMIC (24.04 alpha / 25.04) — 🆕 4/5 ⚙️ 4/5 🎮 4/5 🧱 2/5 ♻️ 3/5
+
+System76's own next-generation desktop on Pop!_OS. Rust-based, ambitious,
+visually polished. As of 2026 the COSMIC desktop still ships with
+crashes and regressions that disrupt long-running GPU sessions —
+exactly the workload AI users hit hardest.
+
+- **Site:** [pop.system76.com](https://pop.system76.com)
+- **Why B (not S):** Good idea, ship date pulled in too aggressively.
+  Daily-driver complaints across [r/pop_os](https://www.reddit.com/r/pop_os/)
+  and the [System76 chat](https://chat.system76.com/community/channels/cosmic)
+  cluster around compositor crashes, multi-monitor regressions, and
+  Wayland session loss. None of this is fatal — recovery is a relog —
+  but it disqualifies the COSMIC variant from "drop in and run".
+- **Recommendation:** If you want System76 hardware support today,
+  use [Pop!_OS GNOME (Tier A)](#popos-gnome-2204-lts--🆕-25-⚙️-55-🎮-55-🧱-45-♻️-35).
+  Revisit COSMIC once 1.0 ships stable.
 
 ### Debian 12 (Bookworm) — 🆕 2/5 ⚙️ 4/5 🎮 4/5 🧱 5/5 ♻️ 4/5
 
