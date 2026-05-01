@@ -337,6 +337,10 @@ and the time it took.
 
 - **[awesome-local-ai](https://github.com/BrethofAI/awesome-local-ai)** — The tools you'll run on these distros.
 - **[awesome-private-ai](https://github.com/BrethofAI/awesome-private-ai)** — Privacy-architecture context for cloud vs self-host trade-offs.
+- **[awesome-ai-mine](https://github.com/BrethofAI/awesome-ai-mine)** — License + ToS analysis for the models you'll run on these distros.
+- **[comfyui-workflows](https://github.com/BrethofAI/comfyui-workflows)** — ComfyUI workflows tested on the same hardware tier.
+- **[awesome-mcp-servers](https://github.com/BrethofAI/awesome-mcp-servers)** — MCP servers you'll wire into your local agents.
+- **[anti-dev-tier-list](https://github.com/BrethofAI/anti-dev-tier-list)** — Why some "Linux for AI" defaults from big-tech repos are actively user-hostile.
 
 ## Contributing
 
