@@ -1,0 +1,17 @@
+name: CachyOS
+slug: cachyos
+url: https://cachyos.org
+category: tier-s
+category_label: Tier S
+tagline: Arch-based, performance-tuned. Ships kernel 6.16+ with zen / lto / x86-64-v3
+  optimisations. NVIDIA proprietary driver works out of the box; switch to `nvidia-open-dkms`
+  for Blackwell. NVIDIA Container Toolkit available via `cachyos-cli`…
+tags:
+- 🆕 5/5
+- ⚙️ 5/5
+- 🎮 5/5
+- 🧱 4/5
+- ♻️ 3/5
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 0

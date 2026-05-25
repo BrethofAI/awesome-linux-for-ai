@@ -1,0 +1,15 @@
+name: Endeavour OS
+slug: endeavour-os
+url: https://endeavouros.com
+category: tier-c
+category_label: Tier C
+tagline: Arch with a friendly installer. Same currency as Arch; same risks.
+tags:
+- 🆕 5/5
+- ⚙️ 3/5
+- 🎮 4/5
+- 🧱 3/5
+- ♻️ 2/5
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 3

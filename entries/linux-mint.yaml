@@ -1,0 +1,15 @@
+name: Linux Mint
+slug: linux-mint
+url: https://linuxmint.com
+category: tier-c
+category_label: Tier C
+tagline: Ubuntu LTS-derived. Kernel currency lags; NVIDIA drivers fine.
+tags:
+- 🆕 2/5
+- ⚙️ 4/5
+- 🎮 4/5
+- 🧱 5/5
+- ♻️ 3/5
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 3

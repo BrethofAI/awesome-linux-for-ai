@@ -1,0 +1,16 @@
+name: Debian 12 (Bookworm)
+slug: debian-12-bookworm
+url: https://debian.org
+category: tier-b
+category_label: Tier B
+tagline: Rock-stable. Kernel 6.1 by default; backports kernel up to 6.11. NVIDIA non-free
+  drivers in the contrib repos.
+tags:
+- 🆕 2/5
+- ⚙️ 4/5
+- 🎮 4/5
+- 🧱 5/5
+- ♻️ 4/5
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 2

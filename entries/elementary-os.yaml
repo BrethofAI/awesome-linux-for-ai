@@ -1,0 +1,16 @@
+name: Elementary OS
+slug: elementary-os
+url: https://elementary.io
+category: tier-d
+category_label: Tier D
+tagline: Beautiful Pantheon DE; not AI-focused. Old kernel, slow NVIDIA driver adoption,
+  snap-everywhere.
+tags:
+- 🆕 2/5
+- ⚙️ 3/5
+- 🎮 3/5
+- 🧱 4/5
+- ♻️ 3/5
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 4

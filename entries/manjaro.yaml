@@ -1,0 +1,16 @@
+name: Manjaro
+slug: manjaro
+url: https://manjaro.org
+category: tier-b
+category_label: Tier B
+tagline: Arch with a 2-week-delayed package window. NVIDIA + CUDA work; the delay
+  window catches some upstream regressions.
+tags:
+- 🆕 4/5
+- ⚙️ 4/5
+- 🎮 4/5
+- 🧱 3/5
+- ♻️ 2/5
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 2

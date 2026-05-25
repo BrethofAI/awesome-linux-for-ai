@@ -1,0 +1,16 @@
+name: CentOS Stream 9 / Rocky / AlmaLinux 9
+slug: centos-stream-9-rocky-almalinux-9
+url: ''
+category: tier-c
+category_label: Tier C
+tagline: Enterprise RHEL clones. NVIDIA's official CUDA RPMs target this family first.
+  Stable, conservative kernel.
+tags:
+- 🆕 2/5
+- ⚙️ 4/5
+- 🎮 5/5
+- 🧱 5/5
+- ♻️ 4/5
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 3

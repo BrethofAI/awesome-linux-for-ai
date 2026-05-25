@@ -1,0 +1,16 @@
+name: Arch Linux
+slug: arch-linux
+url: https://archlinux.org
+category: tier-a
+category_label: Tier A
+tagline: Vanilla Arch. AUR has packages for every CUDA / NVIDIA / ROCm release. Manual
+  install but every component is current.
+tags:
+- 🆕 5/5
+- ⚙️ 3/5
+- 🎮 5/5
+- 🧱 3/5
+- ♻️ 2/5
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 1

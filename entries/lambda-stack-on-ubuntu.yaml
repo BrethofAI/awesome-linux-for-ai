@@ -1,0 +1,11 @@
+name: Lambda Stack on Ubuntu
+slug: lambda-stack-on-ubuntu
+url: https://lambdalabs.com/lambda-stack-deep-learning-software
+category: specialised-niche
+category_label: Specialised / Niche
+tagline: Lambda Labs's matched driver + CUDA + cuDNN + PyTorch packaged for Ubuntu.
+  Closest thing to "drop in PyTorch" for an Ubuntu base.
+tags: []
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 6

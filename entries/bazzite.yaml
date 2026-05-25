@@ -1,0 +1,12 @@
+name: Bazzite
+slug: bazzite
+url: https://bazzite.gg
+category: community-recommended-untested-by-us
+category_label: Community-recommended (untested by us)
+tagline: Fedora-Atomic + COSMIC / KDE images with NVIDIA drivers preinstalled (both
+  proprietary and open variants). Container-native (rpm-ostree), making CUDA toolchain
+  experiments safe and reversible. The "Bazzite-DX" developer-focused variant l…
+tags: []
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 5
