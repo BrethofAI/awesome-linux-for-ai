@@ -126,7 +126,7 @@ Distros Nova called out by name in the episode's Snub Round. Pretty, themed, or 
 - **[awesome-local-ai](https://github.com/BrethofAI/awesome-local-ai)** — Local-first AI tools (runtimes, chat apps, agents) that will live on these distros.
 - **[awesome-private-ai](https://github.com/BrethofAI/awesome-private-ai)** — Privacy-respecting AI more broadly.
 - **[awesome-mcp-servers](https://github.com/BrethofAI/awesome-mcp-servers)** — MCP servers that sit happily next to a local LLM.
-- **[awesome-ai-mine](https://github.com/BrethofAI/awesome-ai-mine)** — Licence + ToS analysis for the models you'll run locally.
+- **[awesome-ai-minefield](https://github.com/BrethofAI/awesome-ai-minefield)** — Licence + ToS analysis for the models you'll run locally.
 - **[awesome-llms-txt](https://github.com/BrethofAI/awesome-llms-txt)** — Tools that publish `llms.txt` for agent discovery.
 
 ## Watch the episode
