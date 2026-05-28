@@ -29,4 +29,4 @@ repo — so edit the YAML, not this README.
 
 ---
 
-Maintained by **[Brethof AI](https://brethof.com)** — local-first AI tools for people who take their hardware seriously.
+Maintained by **[Brethof AI](https://brethof.ai)** — local-first AI tools for people who take their hardware seriously.

@@ -5,7 +5,7 @@ assistant) as collaborator on curation, research, and content drafting.
 
 ## Maintainer
 
-**Brethof AI** — [brethof.com](https://brethof.com)
+**Brethof AI** — [brethof.ai](https://brethof.ai)
 The list's editorial direction, opinions, and final say on what gets
 included rest with Brethof AI. The maintainer reviews and approves
 every PR and entry.

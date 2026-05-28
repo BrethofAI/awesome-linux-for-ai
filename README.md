@@ -2,7 +2,7 @@
 
 > Curated tier list of Linux distros, ranked specifically for **running local AI on your own hardware in 2026** — NVIDIA driver currency, CUDA / ROCm ergonomics, kernel cadence, btrfs / snapshot safety. Not a general-purpose desktop list.
 
-Maintained by [Brethof AI](https://brethof.com). Companion to Nova's
+Maintained by [Brethof AI](https://brethof.ai). Companion to Nova's
 episode 2 — **[Best OS for Local AI in 2026](https://brethof.ai/nova/ep-002-best-os-local-ai/)** —
 which is the long-form video version of this list. Watch the episode
 for the editorial argument; use this list as the at-a-glance reference.
@@ -152,4 +152,4 @@ repo — so edit the YAML, not this README.
 
 ---
 
-Maintained by **[Brethof AI](https://brethof.com)** — local-first AI tools for people who take their hardware seriously.
+Maintained by **[Brethof AI](https://brethof.ai)** — local-first AI tools for people who take their hardware seriously.
