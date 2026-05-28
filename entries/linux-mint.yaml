@@ -3,13 +3,13 @@ slug: linux-mint
 url: https://linuxmint.com
 category: tier-c
 category_label: Tier C
-tagline: Ubuntu LTS-derived. Kernel currency lags; NVIDIA drivers fine.
+tagline: 'Best Windows-refugee landing pad — Cinnamon is genuinely pleasant, casual desktop fine. But: Ubuntu LTS base means packages are old by design, Mint adds extra stability-verification delay on top of that, and for an AI workstation where CUDA moves every six weeks, you''re always behind. Inherits Canonical''s downstream snap + Pro decisions. Gateway only.'
 tags:
-- 🆕 2/5
-- ⚙️ 4/5
-- 🎮 4/5
-- 🧱 5/5
-- ♻️ 3/5
+- 🔴 Gateway only
+- Ubuntu LTS base
+- Cinnamon
+- CUDA cadence lag
+- Snap + Pro inherited
 list: linux-for-ai
 added: '2026-04-30'
 category_order: 3

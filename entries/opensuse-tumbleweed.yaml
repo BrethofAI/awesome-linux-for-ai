@@ -1,0 +1,14 @@
+name: openSUSE Tumbleweed
+slug: opensuse-tumbleweed
+url: https://www.opensuse.org
+category: tier-snub
+category_label: Snub Round
+tagline: 'Still alive, I think — genuinely a fine rolling distro that nobody outside of Germany installs. YaST + zypper combination is solid; CUDA via NVIDIA''s official repo. Just not a meaningful presence in the AI-distro conversation.'
+tags:
+- 🚫 Snubbed
+- Rolling (Tumbleweed)
+- YaST + zypper
+- Mostly in Germany
+list: linux-for-ai
+added: '2026-05-28'
+category_order: 4

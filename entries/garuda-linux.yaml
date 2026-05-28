@@ -1,0 +1,13 @@
+name: Garuda Linux
+slug: garuda-linux
+url: https://garudalinux.org
+category: tier-snub
+category_label: Snub Round
+tagline: 'Looks like a gaming peripheral exploded. Beautiful, ricer-bait — Arch-based with extreme defaults that mostly serve screenshot collections rather than a working AI rig.'
+tags:
+- 🚫 Snubbed
+- Ricer-bait
+- Arch-based
+list: linux-for-ai
+added: '2026-05-28'
+category_order: 4

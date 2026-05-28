@@ -1,0 +1,16 @@
+name: NixOS 26.05
+slug: nixos
+url: https://nixos.org
+category: tier-c
+category_label: Tier C
+tagline: 'Reproducibility gold standard — pin your CUDA version, kernel, and PyTorch build in a flake; your colleague clones the flake and gets the identical environment six months later. But: Nix language is a math proof, flakes still "experimental" after years, your Bluetooth headset becomes a packaging project, your bank''s .deb installer becomes a packaging project. Specific use only: fleets of identical workstations, not a single desktop.'
+tags:
+- 🔴 Specific use only
+- NixOS 26.05
+- Reproducible (flakes)
+- Steep Nix learning curve
+- Fleet-friendly
+- Genius + unpaid labour
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 3

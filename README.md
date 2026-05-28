@@ -1,352 +1,150 @@
 # awesome-linux-for-ai
 
-> Linux distributions ranked for AI/ML developer workstations in 2026.
+> Curated tier list of Linux distros, ranked specifically for **running local AI on your own hardware in 2026** — NVIDIA driver currency, CUDA / ROCm ergonomics, kernel cadence, btrfs / snapshot safety. Not a general-purpose desktop list.
 
-Maintained by [Brethof AI](https://brethof.com). Companion to
-[awesome-local-ai](https://github.com/BrethofAI/awesome-local-ai),
-which is about the tools — this list is about what to run them on.
+Maintained by [Brethof AI](https://brethof.com). Companion to Nova's
+episode 2 — **[Best OS for Local AI in 2026](https://brethof.ai/nova/ep-002-best-os-local-ai/)** —
+which is the long-form video version of this list. Watch the episode
+for the editorial argument; use this list as the at-a-glance reference.
 
 ## Why this list exists
 
-"Just install Ubuntu" is no longer the answer for AI work. The reasons:
+Every "best Linux for AI" article in 2026 still says "Ubuntu, because
+that's what the tutorials assume." That was true in 2022. In 2026 the
+tutorials are written by AI agents, NVIDIA driver releases happen
+weekly, and the OS that ships kernel updates in hours wins. Ubuntu
+ships them two releases later.
 
-- **New GPUs need new kernels.** RTX 50-series (Blackwell, sm_120) needs
-  Linux ≥ 6.11; RDNA 4 needs ≥ 6.10. Many LTS distros lag a year.
-- **NVIDIA driver matters more than ever.** Open-kernel modules on
-  Blackwell, GSP firmware, container-toolkit version, and CUDA forward-compat
-  all need to line up. Some installers do this for you, some make it
-  homework.
-- **PyTorch and CUDA versions move quarterly.** A distro that pins old
-  glibc / old CUDA on its release branch wastes hours of compat work.
-- **Container runtime matters.** Docker, Podman, NVIDIA Container
-  Toolkit (NCT), and CDI mode interactions are fiddly. Distros differ
-  in how clean the path is.
+This list ranks distros by **the things that actually matter for
+running models on your own GPU**:
 
-Our ranking reflects: how fast you get to a working PyTorch/CUDA setup
-out of the box, how recent the kernel is, NVIDIA driver friendliness,
-and how well the distro handles dual-GPU / VFIO / multi-monitor edge
-cases that AI developers actually hit.
+- How fast does the NVIDIA driver land after a release?
+- What's the kernel currency, and does it match the cards on the market?
+- Does CUDA install in one command, or does it install in a weekend?
+- Are containers + the NVIDIA Container Toolkit a first-class path?
+- Is there btrfs + snapshots to roll back a broken driver update?
+- Is the desktop usable for the other 90% of your time at the machine?
 
-## How we rank
+Editorial alignment: where this list and Nova's ep_002 verdicts agree,
+they agree. Where the list places Ubuntu B and Nova says 🔴 — that's
+the operational vs editorial split: Ubuntu IS still the most workable
+non-CachyOS path for plug-and-play CUDA today. Nova's episode is the
+opinionated argument for moving off it. Both are true at once.
 
-Each distro is rated on five axes. Higher is better.
+## Inclusion rules
 
-- **🆕 Currency** — kernel + driver age vs upstream
-- **⚙️ Day-1 setup** — how close `pytorch.cuda.is_available()` is to a fresh install
-- **🎮 GPU happiness** — NVIDIA / AMD / Intel reality, not slideware
-- **🧱 Stability** — does it stay working after package updates
-- **♻️ Reproducibility** — can you recreate the same setup six months later
+To be on the list:
 
-## Tier definitions
+- A distro a real person could install on a real AI workstation in 2026.
+- Active maintenance — a release, point release, or kernel rebase in
+  the last 12 months.
+- A real artefact (not a "coming soon" landing page).
+- Covered in Nova's ep_002 — either in the main verdict block or the
+  Snub Round.
 
-| Tier | Meaning |
-|------|---------|
-| **S** | Drop in. CUDA / ROCm working in one boot. Kernel current. NVIDIA happy. |
-| **A** | Excellent with one or two well-known config steps. |
-| **B** | Works fine if you accept its trade-offs. Common in practice. |
-| **C** | Possible but you'll fight it. Choose only with strong reason. |
-| **D** | Don't, for AI work. |
+## Tier legend
+
+- **🟢 Tier S — Winner.** The one to install. Single entry: CachyOS.
+- **🟡 Tier A — Setup ritual.** Excellent if you accept that initial
+  configuration is a project, not a wizard.
+- **🟡 Tier B — With caveats.** Will run AI workloads, but with known
+  friction — driver lag, packaging quirks, or pre-production desktops.
+- **🔴 Tier C — Not for an AI desktop.** Either positioned for a
+  different use case (server / fleet), or actively deprecated for AI.
+- **🚫 Snub Round.** Distros Nova called out by name in the episode
+  for being beside-the-point: pretty, themed, or basically Arch
+  again. Listed for completeness.
+
+The per-entry tag pills carry the specific reasons (e.g. *NVIDIA ~2
+releases behind*, *btrfs default*, *DKMS dance*, *Snap forced*).
 
 ## Contents
 
-- [Tier S — Drop in and run](#tier-s--drop-in-and-run)
-- [Tier A — Great with a config step or two](#tier-a--great-with-a-config-step-or-two)
-- [Tier B — Solid trade-offs](#tier-b--solid-trade-offs)
-- [Tier C — Only with a reason](#tier-c--only-with-a-reason)
-- [Tier D — Avoid for AI work](#tier-d--avoid-for-ai-work)
-- [Community-recommended (untested by us)](#community-recommended-untested-by-us)
-- [Specialised / Niche](#specialised--niche)
-- [Container-only / atomic distros](#container-only--atomic-distros)
-- [What we test](#what-we-test)
-
-## Tier S — Drop in and run
-
-### CachyOS — 🆕 5/5 ⚙️ 5/5 🎮 5/5 🧱 4/5 ♻️ 3/5
-
-Arch-based, performance-tuned. Ships kernel 6.16+ with zen / lto / x86-64-v3
-optimisations. NVIDIA proprietary driver works out of the box; switch
-to `nvidia-open-dkms` for Blackwell. NVIDIA Container Toolkit available
-via `cachyos-cli` setup; CUDA `13.1` builds available.
-
-- **Site:** [cachyos.org](https://cachyos.org)
-- **Why S:** Best out-of-box experience for new NVIDIA hardware in
-  2026. KDE Plasma desktop ergonomics; rolling release keeps drivers
-  current.
-- **Caveat:** Rolling means the occasional `pacman -Syu` regression.
-  Use `snapper-tools` (default) for one-command rollback.
-
-> **Why CachyOS sits alone in S.** Tier S is what we'll bet our own
-> production AI workloads on, today. We've validated it daily on the
-> rig described in [What we test](#what-we-test). Other promising
-> candidates are listed elsewhere with that distinction made explicit:
-> Bazzite in [Community-recommended (untested by us)](#community-recommended-untested-by-us)
-> because we haven't lived on it yet, Pop!_OS COSMIC in Tier B because
-> of compositor-stability issues we *have* seen on the rig.
-
-## Tier A — Great with a config step or two
-
-### Ubuntu 24.04 LTS — 🆕 3/5 ⚙️ 5/5 🎮 5/5 🧱 5/5 ♻️ 4/5
-
-Industry default. Most AI tools have an "ubuntu 22.04/24.04 install
-guide" first. NVIDIA drivers via `ubuntu-drivers autoinstall`; Lambda
-Labs publishes [Lambda Stack](https://lambdalabs.com/lambda-stack-deep-learning-software)
-which gives you matched driver + CUDA + cuDNN + PyTorch in one install.
-
-- **Site:** [ubuntu.com](https://ubuntu.com)
-- **Why A:** Stability + ecosystem. Ships HWE kernel rolling forward
-  every 6 months for newer-hardware cases.
-- **Caveat:** Snap-by-default for some packages frustrates dev work.
-  Ship date for new GPU support can lag rolling distros by months.
-
-### Fedora Workstation 41 — 🆕 5/5 ⚙️ 4/5 🎮 4/5 🧱 4/5 ♻️ 3/5
-
-Fast-moving but not Arch-fast. Kernel 6.11 in 41, 6.13 in 42. NVIDIA
-drivers via RPM Fusion in one extra repo step. CUDA via NVIDIA's
-official RHEL-9 RPMs (works on Fedora with minor symlink dance).
-
-- **Site:** [fedoraproject.org/workstation](https://fedoraproject.org/workstation)
-- **Why A:** Strong middle-ground between LTS and rolling. SELinux
-  enforcing-by-default catches misconfigured AI containers early.
-
-### Arch Linux — 🆕 5/5 ⚙️ 3/5 🎮 5/5 🧱 3/5 ♻️ 2/5
+- [Tier S](#tier-s) (1)
+- [Tier A](#tier-a) (1)
+- [Tier B](#tier-b) (3)
+- [Tier C](#tier-c) (3)
+- [Snub Round](#snub-round) (6)
 
-Vanilla Arch. AUR has packages for every CUDA / NVIDIA / ROCm release.
-Manual install but every component is current.
+<!-- The list below is generated from entries/*.yaml by scripts/gen_awesome_readme.py. Edit the YAML, not this section. -->
 
-- **Site:** [archlinux.org](https://archlinux.org)
-- **Why A:** No middleman. The Arch wiki is the reference manual for
-  GPU-on-Linux generally.
-- **Caveat:** You own all updates. Use [`paru` / `yay`](https://github.com/Morganamilo/paru)
-  + [`informant`](https://github.com/bradford-smith94/informant) to
-  catch breaking news posts before installing them.
+## Tier S
 
-### NixOS 24.11+ — 🆕 4/5 ⚙️ 4/5 🎮 4/5 🧱 5/5 ♻️ 5/5
+The single distro built around the actual demands of a 2026 AI workstation. NVIDIA driver updates land in hours, the kernel is tuned and rolling, packages are compiled for modern x86, and btrfs + snapshots give you a 30-second rollback when something goes sideways. If you only read one tier of this list, read this one.
 
-Reproducibility champion. Pin your CUDA version, kernel, and PyTorch
-build to a flake; your colleague can clone the flake and reproduce the
-identical environment six months later.
+- **[CachyOS](https://cachyos.org)** — 🟢 Winner · BORE scheduler · x86-64-v3 · LTO/PGO/BOLT · NVIDIA hot updates · btrfs default · pacman + paru · KDE polish  
+  Nova's pick for best OS for local AI in 2026. linux-cachyos kernel with the BORE scheduler, x86-64-v3 compiled packages, LTO + PGO + BOLT optimisations, Limine bootloader, NVIDIA driver updates within hours, btrfs with snapshots on by default (30-second rollback). Same Arch wiki applies; pacman + paru is the friendliest install experience in this list. Gaming and AI both first-class.
 
-- **Site:** [nixos.org](https://nixos.org)
-- **Why A:** Best in class for reproducibility. The
-  [`nixos-cuda` cookbook](https://nixos.wiki/wiki/CUDA) covers most
-  AI-workstation needs.
-- **Caveat:** Steep learning curve. Nix language is the cost of
-  reproducibility.
+## Tier A
 
-## Tier B — Solid trade-offs
+No "Winner" status, but if you are happy to spend a weekend configuring the machine, you get the best long-term ergonomics outside of Tier S — current packages, the best wiki in Linux, and AUR recipes for every CUDA / NVIDIA / ROCm release. Setup is the cost of admission.
 
-### Pop!_OS COSMIC (24.04 alpha / 25.04) — 🆕 4/5 ⚙️ 3/5 🎮 3/5 🧱 2/5 ♻️ 3/5
+- **[Arch Linux](https://archlinux.org)** — 🟡 Setup ritual · Rolling · AUR · Maximum transparency · Best wiki in Linux · pacman  
+  Vanilla Arch. The 2020-era "breaks every Tuesday" reputation is outdated in 2026. Setup is a project, not an install — but configure everything yourself and you get maximum transparency, current packages, and the best wiki in Linux. AUR has a recipe for every CUDA / NVIDIA / ROCm release.
 
-System76's own next-generation desktop on Pop!_OS. Rust-based,
-ambitious, visually polished. The classic Pop!_OS GNOME edition has
-effectively been retired — System76's roadmap is COSMIC-only, so this
-is the only Pop!_OS variant you can install fresh today.
+## Tier B
 
-As of 2026 the COSMIC desktop still ships with crashes, NVIDIA-driver
-flakiness, and regressions that disrupt long-running GPU sessions —
-exactly the workload AI users hit hardest. Promising future, not a
-reliable present.
+These distros will run AI workloads, but each has a known friction point you will hit within the first week: SELinux + container permissions, an in-development desktop, or a snap-and-Pro upsell pipeline that ships with the system. Workable, with eyes open.
 
-- **Site:** [pop.system76.com](https://pop.system76.com)
-- **Why B (not S):** Good idea, ship date pulled in too aggressively.
-  Daily-driver complaints across [r/pop_os](https://www.reddit.com/r/pop_os/)
-  and the [System76 chat](https://chat.system76.com/community/channels/cosmic)
-  cluster around compositor crashes, multi-monitor regressions, NVIDIA
-  driver edge cases, and Wayland session loss. None of this is fatal —
-  recovery is a relog — but it disqualifies COSMIC from "drop in and
-  run" for AI work where a long-running training job that crashes is
-  hours of wall-clock lost.
-- **Recommendation:** Watch this space. When COSMIC 1.0 ships stable
-  with the NVIDIA driver matrix solid, it has a real shot at Tier S.
-  Until then, run something else for production AI work.
+- **[Fedora Workstation 43](https://fedoraproject.org/workstation)** — 🟡 With caveats · Fedora 43 · Wayland / PipeWire / HDR · SELinux friction · NVIDIA via RPMFusion · 6mo release breaks  
+  Best preview of where the Linux desktop is going — Wayland, PipeWire, HDR first. But SELinux fights AI tooling (containers blocked, mounts denied), NVIDIA needs RPMFusion + signed kernel modules + reboot dance, and 6-month release upgrades break things. Great desktop, not a great AI workstation. Cutting edge has a cost.
+- **[Pop!_OS (COSMIC)](https://pop.system76.com)** — 🟡 Watch this space · COSMIC desktop · Rust DE · Ubuntu base · Snap + Pro inherited · Pre-production  
+  System76's Pop!_OS with the COSMIC desktop — Rust-based, ambitious, the only fully from-scratch desktop project in this category. Still in active development; breaking changes ship regularly, not production-grade in 2026. Ubuntu base underneath, so it inherits snap + Pro. Watch this space, but not yet worth betting your daily driver on it.
+- **[Ubuntu 26.04 LTS](https://ubuntu.com)** — 🟡 Deprecate (still workable) · Ubuntu 26.04 LTS · Largest CUDA ecosystem · ubuntu-drivers autoinstall · Snap forced · NVIDIA ~2 releases behind · Pro motd upsell  
+  Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA driver ships ~2 releases behind (especially Blackwell), Pro tier upsell printed in the terminal motd, desktop team skeleton crew. Most workable non-CachyOS path for plug-and-play CUDA — and that is the entire argument for it. Nova's editorial verdict: switch away.
 
-### Debian 12 (Bookworm) — 🆕 2/5 ⚙️ 4/5 🎮 4/5 🧱 5/5 ♻️ 4/5
+## Tier C
 
-Rock-stable. Kernel 6.1 by default; backports kernel up to 6.11.
-NVIDIA non-free drivers in the contrib repos.
+Positioned for a different use case — set-and-forget servers, identical-fleet reproducibility, or Windows-refugee onboarding — and wrong for an AI workstation in 2026 specifically. Each one is still a great Linux distro for its actual job; just not this one.
 
-- **Site:** [debian.org](https://debian.org)
-- **Why B:** Best server choice that is also acceptable for
-  workstation work. Drops a tier for kernel currency on bleeding-edge
-  GPUs.
+- **[Debian 13 (Trixie)](https://debian.org)** — 🔴 No for AI desktop · Debian 13 Trixie · Set-and-forget server · DKMS dance · Non-free + headers needed · 2-yr stable cycle  
+  Best set-and-forget SERVER distro — rock-solid, conservative, runs forever. Wrong for an AI desktop in 2026. NVIDIA drivers live in non-free + contrib; DKMS silently fails unless you install kernel-headers first; the backports driver `550.163.01-4~bpo13+1` stopped compiling on kernel ≥ 6.19 as of 2026-03. 2-year stable release cycle = ancient packages — "from when AI meant chess engines."
+- **[Linux Mint](https://linuxmint.com)** — 🔴 Gateway only · Ubuntu LTS base · Cinnamon · CUDA cadence lag · Snap + Pro inherited  
+  Best Windows-refugee landing pad — Cinnamon is genuinely pleasant, casual desktop fine. But: Ubuntu LTS base means packages are old by design, Mint adds extra stability-verification delay on top of that, and for an AI workstation where CUDA moves every six weeks, you're always behind. Inherits Canonical's downstream snap + Pro decisions. Gateway only.
+- **[NixOS 26.05](https://nixos.org)** — 🔴 Specific use only · NixOS 26.05 · Reproducible (flakes) · Steep Nix learning curve · Fleet-friendly · Genius + unpaid labour  
+  Reproducibility gold standard — pin your CUDA version, kernel, and PyTorch build in a flake; your colleague clones the flake and gets the identical environment six months later. But: Nix language is a math proof, flakes still "experimental" after years, your Bluetooth headset becomes a packaging project, your bank's .deb installer becomes a packaging project. Specific use only: fleets of identical workstations, not a single desktop.
 
-### openSUSE Tumbleweed — 🆕 5/5 ⚙️ 3/5 🎮 4/5 🧱 4/5 ♻️ 3/5
+## Snub Round
 
-Rolling, but with a strong QA pipeline (`openQA`). NVIDIA drivers via
-official zypper repo; YaST is friendly for non-CLI configuration.
+Distros Nova called out by name in the episode's Snub Round. Pretty, themed, or basically Arch with a coat of paint. Listed for completeness; not recommended for the AI workstation role.
 
-- **Site:** [opensuse.org/tumbleweed](https://www.opensuse.org/tumbleweed/)
-- **Why B:** Excellent stability for a rolling distro. SUSE container
-  toolchain is enterprise-grade.
-
-### Manjaro — 🆕 4/5 ⚙️ 4/5 🎮 4/5 🧱 3/5 ♻️ 2/5
-
-Arch with a 2-week-delayed package window. NVIDIA + CUDA work; the
-delay window catches some upstream regressions.
-
-- **Site:** [manjaro.org](https://manjaro.org)
-- **Why B:** Arch-flavoured for users who don't want bleeding edge.
-  The 2-week delay does *not* protect you from all regressions and
-  occasionally creates conflicts of its own.
-
-## Tier C — Only with a reason
-
-### CentOS Stream 9 / Rocky / AlmaLinux 9 — 🆕 2/5 ⚙️ 4/5 🎮 5/5 🧱 5/5 ♻️ 4/5
-
-Enterprise RHEL clones. NVIDIA's official CUDA RPMs target this family
-first. Stable, conservative kernel.
-
-- **Sites:** [Rocky Linux](https://rockylinux.org) · [AlmaLinux](https://almalinux.org)
-- **Why C (workstation):** Old kernel hurts on new GPUs. As production
-  servers for AI workloads they sit much higher; here we rank
-  desktop / dev experience.
-
-### Endeavour OS — 🆕 5/5 ⚙️ 3/5 🎮 4/5 🧱 3/5 ♻️ 2/5
-
-Arch with a friendly installer. Same currency as Arch; same risks.
-
-- **Site:** [endeavouros.com](https://endeavouros.com)
-- **Why C:** Slot for users who want Arch but find vanilla install
-  daunting. CachyOS does the same thing better for AI specifically.
-
-### Linux Mint — 🆕 2/5 ⚙️ 4/5 🎮 4/5 🧱 5/5 ♻️ 3/5
-
-Ubuntu LTS-derived. Kernel currency lags; NVIDIA drivers fine.
-
-- **Site:** [linuxmint.com](https://linuxmint.com)
-- **Why C:** Excellent for general desktop use; the kernel-lag plus
-  Ubuntu-Snap-bleed-through hurts AI-specific workflows.
-
-## Tier D — Avoid for AI work
-
-### Elementary OS — 🆕 2/5 ⚙️ 3/5 🎮 3/5 🧱 4/5 ♻️ 3/5
-
-Beautiful Pantheon DE; not AI-focused. Old kernel, slow NVIDIA driver
-adoption, snap-everywhere.
-
-- **Site:** [elementary.io](https://elementary.io)
-- **Why D:** No advantage for AI work. Choose for aesthetics on a
-  laptop you won't use for ML training.
-
-### Kali / Parrot — 🆕 4/5 ⚙️ 2/5 🎮 3/5 🧱 3/5 ♻️ 2/5
-
-Penetration-testing distros. Their package selection is wrong for AI;
-their system tuning is for offensive security workloads.
-
-- **Sites:** [kali.org](https://kali.org) · [parrotsec.org](https://parrotsec.org)
-- **Why D:** Wrong tool for the job. Don't pick for AI; if you need
-  pentest tools too, dual-boot or VM them.
-
-## Community-recommended (untested by us)
-
-Distros widely praised in the AI/Linux community that we haven't yet
-field-validated on our own [test rig](#what-we-test). Listed here
-without a tier rating to keep the methodology honest: a tier is
-something we earn by living on the distro. We'll move entries up into
-the tier list once we have day-to-day receipts.
-
-### Bazzite — Fedora-Atomic with NVIDIA preinstalled
-
-Fedora-Atomic + COSMIC / KDE images with NVIDIA drivers preinstalled
-(both proprietary and open variants). Container-native (rpm-ostree),
-making CUDA toolchain experiments safe and reversible. The
-"Bazzite-DX" developer-focused variant looks best-in-class on paper
-for AI on immutable filesystems.
-
-- **Site:** [bazzite.gg](https://bazzite.gg)
-- **Why community-recommended:** Atomic rollback in one reboot,
-  preinstalled NVIDIA drivers, declarative-ish config. The
-  immutable-host + containerised-CUDA pattern is what serious AI ops
-  teams converge on for production fleets.
-- **Why not yet tier-rated:** We've been daily-driving CachyOS and
-  haven't moved an AI workstation to Bazzite-DX yet. Marketing-grade
-  vs measured is a real gap and we won't rate it until we've lived on
-  it through actual training runs and driver upgrades. PRs welcome
-  from anyone running it on Blackwell with NVIDIA Container Toolkit.
-
-## Specialised / Niche
-
-### Asahi Linux — 🍎 Apple Silicon
-
-Linux on M-series Macs. Asahi's ML stack uses the GPU via custom
-kernel-side support; Asahi-Fedora is the production-grade variant.
-[`asahi.dev`](https://asahilinux.org)
-
-- Useful when: you have an M-series Mac and don't want macOS for AI work.
-- Caveat: Apple's GPU is great for inference but the toolchain is
-  custom; CUDA is not available, so you're tied to MLX or
-  Apple-native runtimes.
-
-### Bluefin — 🐂 atomic workstation
-
-Fedora-Silverblue-derived, container-first, immutable. Ships NVIDIA
-DX images with CUDA dev container ready.
-
-- **Site:** [projectbluefin.io](https://projectbluefin.io)
-- Useful when: you want one immutable host and to keep all dev tools
-  in containers.
-
-### Lambda Stack on Ubuntu — 🟦 vendor-tuned
-
-Lambda Labs's matched driver + CUDA + cuDNN + PyTorch packaged for
-Ubuntu. Closest thing to "drop in PyTorch" for an Ubuntu base.
-
-- **Site:** [lambdalabs.com/lambda-stack-deep-learning-software](https://lambdalabs.com/lambda-stack-deep-learning-software)
-
-### TUXEDO OS — 🟦 hardware-tuned
-
-TUXEDO's fork of Ubuntu LTS with tuning for their workstations. NVIDIA
-drivers and TLP / fan-control sane defaults. Decent option if you buy
-their hardware.
-
-- **Site:** [tuxedocomputers.com](https://www.tuxedocomputers.com/)
-
-### EndeavourOS Galileo Neo — see Tier C
-
-## Container-only / atomic distros
-
-For those running AI workloads in containers and treating the host as
-disposable.
-
-- **[Talos Linux](https://www.talos.dev)** — Kubernetes-native, no
-  shell, declarative config. Excellent for AI inference clusters.
-- **[k3os / kairos](https://kairos.io)** — kairos extends k3os; immutable
-  with config-as-code. AI workloads via k3s + GPU operator.
-- **[Flatcar Linux](https://www.flatcar.org)** — CoreOS continuation;
-  container-only host designed for fleet management.
-- **[Bottlerocket](https://aws.amazon.com/bottlerocket/)** — AWS-built
-  immutable container OS. Strong fit for AWS-hosted AI inference.
-
-## What we test
-
-This is a living document. When we benchmark a distro for ranking
-changes, we record:
-
-- Kernel version at install
-- NVIDIA driver branch + open-vs-proprietary
-- `nvidia-smi` working out of the box (yes / no)
-- Steps from fresh install to `import torch; torch.cuda.is_available() == True`
-- Time-to-CUDA-working in minutes
-- Whether NVIDIA Container Toolkit + Docker compose works without
-  extra config
-
-PRs welcome — please attach the test environment (host, GPU, kernel)
-and the time it took.
+- **[Elementary OS](https://elementary.io)** — 🚫 Snubbed · Pantheon DE · Stuck in 2019  
+  Pantheon desktop is genuinely beautiful. Pretty but stuck in 2019 — old kernel, slow NVIDIA driver adoption, snap-everywhere. Not an AI workstation.
+- **[EndeavourOS](https://endeavouros.com)** — 🚫 Snubbed · Arch + installer wizard · That is the whole pitch  
+  Arch with a friendly installer wizard. That is the whole pitch — same currency as Arch, same risks. If you want Arch, install Arch.
+- **[Garuda Linux](https://garudalinux.org)** — 🚫 Snubbed · Ricer-bait · Arch-based  
+  Looks like a gaming peripheral exploded. Beautiful, ricer-bait — Arch-based with extreme defaults that mostly serve screenshot collections rather than a working AI rig.
+- **[Manjaro](https://manjaro.org)** — 🚫 Snubbed · Delayed AUR · Worst of both worlds  
+  Arch with a 2-week-delayed package window. Delayed AUR sync means constant breakage when you actually need a current package. Worst of both worlds.
+- **[openSUSE Tumbleweed](https://www.opensuse.org)** — 🚫 Snubbed · Rolling (Tumbleweed) · YaST + zypper · Mostly in Germany  
+  Still alive, I think — genuinely a fine rolling distro that nobody outside of Germany installs. YaST + zypper combination is solid; CUDA via NVIDIA's official repo. Just not a meaningful presence in the AI-distro conversation.
+- **[Zorin OS](https://zorin.com)** — 🚫 Snubbed · Windows cosplay  
+  Windows cosplay. Tries so hard to look like Windows that it forgets the point of switching.
 
 ## Related work
 
-- **[awesome-local-ai](https://github.com/BrethofAI/awesome-local-ai)** — The tools you'll run on these distros.
-- **[awesome-private-ai](https://github.com/BrethofAI/awesome-private-ai)** — Privacy-architecture context for cloud vs self-host trade-offs.
-- **[awesome-ai-mine](https://github.com/BrethofAI/awesome-ai-mine)** — License + ToS analysis for the models you'll run on these distros.
-- **[comfyui-workflows](https://github.com/BrethofAI/comfyui-workflows)** — ComfyUI workflows tested on the same hardware tier.
-- **[awesome-mcp-servers](https://github.com/BrethofAI/awesome-mcp-servers)** — MCP servers you'll wire into your local agents.
-- **[anti-dev-tier-list](https://github.com/BrethofAI/anti-dev-tier-list)** — Why some "Linux for AI" defaults from big-tech repos are actively user-hostile.
+- **[awesome-local-ai](https://github.com/BrethofAI/awesome-local-ai)** — Local-first AI tools (runtimes, chat apps, agents) that will live on these distros.
+- **[awesome-private-ai](https://github.com/BrethofAI/awesome-private-ai)** — Privacy-respecting AI more broadly.
+- **[awesome-mcp-servers](https://github.com/BrethofAI/awesome-mcp-servers)** — MCP servers that sit happily next to a local LLM.
+- **[awesome-ai-mine](https://github.com/BrethofAI/awesome-ai-mine)** — Licence + ToS analysis for the models you'll run locally.
+- **[awesome-llms-txt](https://github.com/BrethofAI/awesome-llms-txt)** — Tools that publish `llms.txt` for agent discovery.
+
+## Watch the episode
+
+The companion video — **[Nova ep 002: Best OS for Local AI in 2026](https://brethof.ai/nova/ep-002-best-os-local-ai/)** — has the long-form pros / cons walkthrough per distro, the catchphrases, and the editorial argument. This README is the short reference; the episode is the argument.
 
 ## Contributing
 
-Open an issue with the distro, your hardware, the kernel and driver
-versions you saw, and a plain time-to-CUDA-working measurement. We
-update the ranking based on reproducible tests, not vibes.
+Open an issue with:
+
+- The distro name + homepage URL.
+- The tier you think it belongs to + one paragraph on **why specifically for AI workloads** — driver cadence, kernel currency, CUDA path, etc. General desktop-friendliness isn't enough.
+- A receipt for any factual claim (driver release date, packaging quirk, etc).
+
+Entries live as one YAML file per distro under `entries/`. This
+README is generated from them by [`scripts/gen_awesome_readme.py`](https://github.com/BrethofAI/brethof-website/blob/main/scripts/gen_awesome_readme.py)
+in the [`brethof-website`](https://github.com/BrethofAI/brethof-website)
+repo — so edit the YAML, not this README.
 
 ## License
 
@@ -354,5 +152,4 @@ update the ranking based on reproducible tests, not vibes.
 
 ---
 
-Maintained by **[Brethof AI](https://brethof.com)** — AI tools built for
-people who take their data seriously.
+Maintained by **[Brethof AI](https://brethof.com)** — local-first AI tools for people who take their hardware seriously.

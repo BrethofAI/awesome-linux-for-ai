@@ -3,15 +3,16 @@ slug: cachyos
 url: https://cachyos.org
 category: tier-s
 category_label: Tier S
-tagline: Arch-based, performance-tuned. Ships kernel 6.16+ with zen / lto / x86-64-v3
-  optimisations. NVIDIA proprietary driver works out of the box; switch to `nvidia-open-dkms`
-  for Blackwell. NVIDIA Container Toolkit available via `cachyos-cli`…
+tagline: 'Nova''s pick for best OS for local AI in 2026. linux-cachyos kernel with the BORE scheduler, x86-64-v3 compiled packages, LTO + PGO + BOLT optimisations, Limine bootloader, NVIDIA driver updates within hours, btrfs with snapshots on by default (30-second rollback). Same Arch wiki applies; pacman + paru is the friendliest install experience in this list. Gaming and AI both first-class.'
 tags:
-- 🆕 5/5
-- ⚙️ 5/5
-- 🎮 5/5
-- 🧱 4/5
-- ♻️ 3/5
+- 🟢 Winner
+- BORE scheduler
+- x86-64-v3
+- LTO/PGO/BOLT
+- NVIDIA hot updates
+- btrfs default
+- pacman + paru
+- KDE polish
 list: linux-for-ai
 added: '2026-04-30'
 category_order: 0

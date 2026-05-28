@@ -3,14 +3,14 @@ slug: arch-linux
 url: https://archlinux.org
 category: tier-a
 category_label: Tier A
-tagline: Vanilla Arch. AUR has packages for every CUDA / NVIDIA / ROCm release. Manual
-  install but every component is current.
+tagline: 'Vanilla Arch. The 2020-era "breaks every Tuesday" reputation is outdated in 2026. Setup is a project, not an install — but configure everything yourself and you get maximum transparency, current packages, and the best wiki in Linux. AUR has a recipe for every CUDA / NVIDIA / ROCm release.'
 tags:
-- 🆕 5/5
-- ⚙️ 3/5
-- 🎮 5/5
-- 🧱 3/5
-- ♻️ 2/5
+- 🟡 Setup ritual
+- Rolling
+- AUR
+- Maximum transparency
+- Best wiki in Linux
+- pacman
 list: linux-for-ai
 added: '2026-04-30'
 category_order: 1

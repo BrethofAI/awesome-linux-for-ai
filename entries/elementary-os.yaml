@@ -1,16 +1,13 @@
 name: Elementary OS
 slug: elementary-os
 url: https://elementary.io
-category: tier-d
-category_label: Tier D
-tagline: Beautiful Pantheon DE; not AI-focused. Old kernel, slow NVIDIA driver adoption,
-  snap-everywhere.
+category: tier-snub
+category_label: Snub Round
+tagline: 'Pantheon desktop is genuinely beautiful. Pretty but stuck in 2019 — old kernel, slow NVIDIA driver adoption, snap-everywhere. Not an AI workstation.'
 tags:
-- 🆕 2/5
-- ⚙️ 3/5
-- 🎮 3/5
-- 🧱 4/5
-- ♻️ 3/5
+- 🚫 Snubbed
+- Pantheon DE
+- Stuck in 2019
 list: linux-for-ai
 added: '2026-04-30'
 category_order: 4

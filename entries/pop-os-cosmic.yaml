@@ -1,0 +1,16 @@
+name: Pop!_OS (COSMIC)
+slug: pop-os-cosmic
+url: https://pop.system76.com
+category: tier-b
+category_label: Tier B
+tagline: 'System76''s Pop!_OS with the COSMIC desktop — Rust-based, ambitious, the only fully from-scratch desktop project in this category. Still in active development; breaking changes ship regularly, not production-grade in 2026. Ubuntu base underneath, so it inherits snap + Pro. Watch this space, but not yet worth betting your daily driver on it.'
+tags:
+- 🟡 Watch this space
+- COSMIC desktop
+- Rust DE
+- Ubuntu base
+- Snap + Pro inherited
+- Pre-production
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 2

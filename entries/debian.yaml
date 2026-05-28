@@ -1,0 +1,16 @@
+name: Debian 13 (Trixie)
+slug: debian
+url: https://debian.org
+category: tier-c
+category_label: Tier C
+tagline: 'Best set-and-forget SERVER distro — rock-solid, conservative, runs forever. Wrong for an AI desktop in 2026. NVIDIA drivers live in non-free + contrib; DKMS silently fails unless you install kernel-headers first; the backports driver `550.163.01-4~bpo13+1` stopped compiling on kernel ≥ 6.19 as of 2026-03. 2-year stable release cycle = ancient packages — "from when AI meant chess engines."'
+tags:
+- 🔴 No for AI desktop
+- Debian 13 Trixie
+- Set-and-forget server
+- DKMS dance
+- Non-free + headers needed
+- 2-yr stable cycle
+list: linux-for-ai
+added: '2026-04-30'
+category_order: 3

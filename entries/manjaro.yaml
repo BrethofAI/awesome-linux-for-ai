@@ -1,16 +1,13 @@
 name: Manjaro
 slug: manjaro
 url: https://manjaro.org
-category: tier-b
-category_label: Tier B
-tagline: Arch with a 2-week-delayed package window. NVIDIA + CUDA work; the delay
-  window catches some upstream regressions.
+category: tier-snub
+category_label: Snub Round
+tagline: 'Arch with a 2-week-delayed package window. Delayed AUR sync means constant breakage when you actually need a current package. Worst of both worlds.'
 tags:
-- 🆕 4/5
-- ⚙️ 4/5
-- 🎮 4/5
-- 🧱 3/5
-- ♻️ 2/5
+- 🚫 Snubbed
+- Delayed AUR
+- Worst of both worlds
 list: linux-for-ai
 added: '2026-04-30'
-category_order: 2
+category_order: 4
