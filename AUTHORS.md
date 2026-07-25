@@ -1,7 +1,6 @@
 # Authors
 
-This repo is maintained by **Brethof AI** with **Claude** (Anthropic's AI
-assistant) as collaborator on curation, research, and content drafting.
+This repo is maintained by **Brethof AI**.
 
 ## Maintainer
 
@@ -10,21 +9,14 @@ The list's editorial direction, opinions, and final say on what gets
 included rest with Brethof AI. The maintainer reviews and approves
 every PR and entry.
 
-## AI collaborator
+## Editorial standard
 
-**Claude** (Anthropic) drafts entries, validates URLs, runs the build
-pipeline, and writes most of the prose you see here. Every commit Claude
-participates in carries a `Co-Authored-By: Claude <noreply@anthropic.com>`
-trailer.
-
-This isn't a "look, AI wrote it" gimmick — it's an honest acknowledgment
-of the workflow. The list is curated by a human editor working with an
-AI assistant, the same way many engineering teams now work. We disclose
-it because hiding it would be dishonest, especially on a list that's
-explicitly about AI tooling and trust.
-
-If a Claude-drafted entry is inaccurate, the responsibility lies with
-Brethof AI as maintainer. PRs and issue reports help us correct.
+Entries are researched against primary sources — the actual licence,
+terms, or documentation, not a vendor blog summary. The load-bearing
+claim is quoted or linked directly in the entry. Accuracy of anything
+published here is Brethof AI's responsibility as maintainer; if an
+entry is wrong or has gone stale, open an issue or a PR and we'll
+correct it.
 
 ## Contributors
 
