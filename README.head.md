@@ -27,8 +27,8 @@ running models on your own GPU**:
 
 Editorial alignment: where this list and Nova's ep_002 verdicts agree,
 they agree. Where the list places Ubuntu B and Nova says 🔴 — that's
-the operational vs editorial split: Ubuntu IS still the most workable
-non-CachyOS path for plug-and-play CUDA today. Nova's episode is the
+the operational vs editorial split: Ubuntu IS still the path every CUDA
+tutorial assumes today. Nova's episode is the
 opinionated argument for moving off it. Both are true at once.
 
 ## Inclusion rules

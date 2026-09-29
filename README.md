@@ -27,8 +27,8 @@ running models on your own GPU**:
 
 Editorial alignment: where this list and Nova's ep_002 verdicts agree,
 they agree. Where the list places Ubuntu B and Nova says 🔴 — that's
-the operational vs editorial split: Ubuntu IS still the most workable
-non-CachyOS path for plug-and-play CUDA today. Nova's episode is the
+the operational vs editorial split: Ubuntu IS still the path every CUDA
+tutorial assumes today. Nova's episode is the
 opinionated argument for moving off it. Both are true at once.
 
 ## Inclusion rules
@@ -91,7 +91,7 @@ These distros will run AI workloads, but each has a known friction point you wil
 - **[Fedora Workstation 44](https://fedoraproject.org/workstation)** — 🟡 With caveats · Fedora 44 · Wayland / PipeWire / HDR · SELinux friction · NVIDIA via RPMFusion · 6mo release breaks  
   Best preview of where the Linux desktop is going — Wayland, PipeWire, HDR first. But SELinux fights AI tooling (containers blocked, mounts denied), NVIDIA needs RPMFusion + signed kernel modules + reboot dance, and 6-month release upgrades break things. Great desktop, not a great AI workstation. Cutting edge has a cost.
 - **[Ubuntu 26.04 LTS](https://ubuntu.com)** — 🟡 Deprecate (still workable) · Ubuntu 26.04 LTS · Largest CUDA ecosystem · ubuntu-drivers autoinstall · Snap forced · NVIDIA branch behind · Pro motd upsell  
-  Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA stays on the 595 production branch (595.91.07 in updates on 2026-09-29) while NVIDIA's 615 branch has been out since 2026-09-09, Pro tier upsell printed in the terminal motd, desktop team skeleton crew. Most workable non-CachyOS path for plug-and-play CUDA — and that is the entire argument for it. Nova's editorial verdict: switch away.
+  Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA stays on the 595 production branch (595.91.07 in updates on 2026-09-29) while NVIDIA's 615 branch has been out since 2026-09-09, Pro tier upsell printed in the terminal motd, desktop team skeleton crew. The path every CUDA guide assumes — and that is the entire argument for it. Nova's editorial verdict: switch away.
 
 ## Tier C
 
