@@ -10,16 +10,17 @@ tier-s: >
   one.
 
 tier-a: >
-  No "Winner" status, but if you are happy to spend a weekend
-  configuring the machine, you get the best long-term ergonomics
-  outside of Tier S — current packages, the best wiki in Linux, and
-  AUR recipes for every CUDA / NVIDIA / ROCm release. Setup is the
-  cost of admission.
+  No "Winner" status, but the best choices outside of Tier S. Arch
+  gives you the best long-term ergonomics if you are happy to spend a
+  weekend configuring the machine — current packages, the best wiki
+  in Linux, and AUR recipes for every CUDA / NVIDIA / ROCm release.
+  Pop!_OS is the opposite trade: it works out of the box, with a
+  current kernel and NVIDIA driver on an older Ubuntu base.
 
 tier-b: >
   These distros will run AI workloads, but each has a known friction
   point you will hit within the first week: SELinux + container
-  permissions, an in-development desktop, or a snap-and-Pro upsell
+  permissions, or a snap-and-Pro upsell
   pipeline that ships with the system. Workable, with eyes open.
 
 tier-c: >

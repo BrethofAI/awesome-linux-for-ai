@@ -45,10 +45,10 @@ To be on the list:
 ## Tier legend
 
 - **🟢 Tier S — Winner.** The one to install. Single entry: CachyOS.
-- **🟡 Tier A — Setup ritual.** Excellent if you accept that initial
-  configuration is a project, not a wizard.
+- **🟡 Tier A — Runner-up.** Excellent for AI work, with one trade-off
+  you accept up front: a setup ritual (Arch) or an older base (Pop!_OS).
 - **🟡 Tier B — With caveats.** Will run AI workloads, but with known
-  friction — driver lag, packaging quirks, or pre-production desktops.
+  friction — driver lag or packaging quirks.
 - **🔴 Tier C — Not for an AI desktop.** Either positioned for a
   different use case (server / fleet), or actively deprecated for AI.
 - **🚫 Snub Round.** Distros Nova called out by name in the episode
@@ -61,8 +61,8 @@ releases behind*, *btrfs default*, *DKMS dance*, *Snap forced*).
 ## Contents
 
 - [Tier S](#tier-s) (1)
-- [Tier A](#tier-a) (1)
-- [Tier B](#tier-b) (3)
+- [Tier A](#tier-a) (2)
+- [Tier B](#tier-b) (2)
 - [Tier C](#tier-c) (3)
 - [Snub Round](#snub-round) (6)
 
@@ -77,19 +77,19 @@ The single distro built around the actual demands of a 2026 AI workstation. NVID
 
 ## Tier A
 
-No "Winner" status, but if you are happy to spend a weekend configuring the machine, you get the best long-term ergonomics outside of Tier S — current packages, the best wiki in Linux, and AUR recipes for every CUDA / NVIDIA / ROCm release. Setup is the cost of admission.
+No "Winner" status, but the best choices outside of Tier S. Arch gives you the best long-term ergonomics if you are happy to spend a weekend configuring the machine — current packages, the best wiki in Linux, and AUR recipes for every CUDA / NVIDIA / ROCm release. Pop!_OS is the opposite trade: it works out of the box, with a current kernel and NVIDIA driver on an older Ubuntu base.
 
 - **[Arch Linux](https://archlinux.org)** — 🟡 Setup ritual · Rolling · AUR · Maximum transparency · Best wiki in Linux · pacman  
   Vanilla Arch. The 2020-era "breaks every Tuesday" reputation is outdated in 2026. Setup is a project, not an install — but configure everything yourself and you get maximum transparency, current packages, and the best wiki in Linux. AUR has a recipe for every CUDA / NVIDIA / ROCm release.
+- **[Pop!_OS (COSMIC)](https://pop.system76.com)** — 🟡 Older base · COSMIC desktop · Rust DE · No snap (Flatpak) · NVIDIA ISO · Own kernel + driver · Ubuntu 24.04 base  
+  System76's Pop!_OS with the COSMIC desktop — Rust-based, the only fully from-scratch desktop project in this category. COSMIC went stable with Pop!_OS 24.04 LTS on 2025-12-11. System76 strips snap (Flatpak is the default), ships a dedicated NVIDIA ISO with the proprietary driver preinstalled, and carries its own kernel and driver on top of the base (kernel 7.1.5 and NVIDIA 595.84 on 2026-09-29 — a newer kernel than Ubuntu 26.04 itself). The one trade-off is the base: still Ubuntu 24.04 — the 26.04 rebase was promised ~2 weeks after Ubuntu 26.04 (April 2026) and on 2026-09-29 there is still no 26.04 ISO (the package repo is being built).
 
 ## Tier B
 
-These distros will run AI workloads, but each has a known friction point you will hit within the first week: SELinux + container permissions, an in-development desktop, or a snap-and-Pro upsell pipeline that ships with the system. Workable, with eyes open.
+These distros will run AI workloads, but each has a known friction point you will hit within the first week: SELinux + container permissions, or a snap-and-Pro upsell pipeline that ships with the system. Workable, with eyes open.
 
 - **[Fedora Workstation 44](https://fedoraproject.org/workstation)** — 🟡 With caveats · Fedora 44 · Wayland / PipeWire / HDR · SELinux friction · NVIDIA via RPMFusion · 6mo release breaks  
   Best preview of where the Linux desktop is going — Wayland, PipeWire, HDR first. But SELinux fights AI tooling (containers blocked, mounts denied), NVIDIA needs RPMFusion + signed kernel modules + reboot dance, and 6-month release upgrades break things. Great desktop, not a great AI workstation. Cutting edge has a cost.
-- **[Pop!_OS (COSMIC)](https://pop.system76.com)** — 🟡 Watch this space · COSMIC desktop · Rust DE · No snap (Flatpak) · NVIDIA ISO · Ubuntu 24.04 base  
-  System76's Pop!_OS with the COSMIC desktop — Rust-based, the only fully from-scratch desktop project in this category. COSMIC went stable with Pop!_OS 24.04 LTS on 2025-12-11. System76 strips snap (Flatpak is the default) and there is a dedicated NVIDIA ISO with the proprietary driver preinstalled. The caveat is the base: still Ubuntu 24.04 — the 26.04 rebase was promised ~2 weeks after Ubuntu 26.04 (April 2026) and on 2026-09-29 there is still no 26.04 ISO (the package repo is being built). Watch this space.
 - **[Ubuntu 26.04 LTS](https://ubuntu.com)** — 🟡 Deprecate (still workable) · Ubuntu 26.04 LTS · Largest CUDA ecosystem · ubuntu-drivers autoinstall · Snap forced · NVIDIA branch behind · Pro motd upsell  
   Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA stays on the 595 production branch (595.91.07 in updates on 2026-09-29) while NVIDIA's 615 branch has been out since 2026-09-09, Pro tier upsell printed in the terminal motd, desktop team skeleton crew. Most workable non-CachyOS path for plug-and-play CUDA — and that is the entire argument for it. Nova's editorial verdict: switch away.
 

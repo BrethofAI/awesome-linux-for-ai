@@ -45,10 +45,10 @@ To be on the list:
 ## Tier legend
 
 - **🟢 Tier S — Winner.** The one to install. Single entry: CachyOS.
-- **🟡 Tier A — Setup ritual.** Excellent if you accept that initial
-  configuration is a project, not a wizard.
+- **🟡 Tier A — Runner-up.** Excellent for AI work, with one trade-off
+  you accept up front: a setup ritual (Arch) or an older base (Pop!_OS).
 - **🟡 Tier B — With caveats.** Will run AI workloads, but with known
-  friction — driver lag, packaging quirks, or pre-production desktops.
+  friction — driver lag or packaging quirks.
 - **🔴 Tier C — Not for an AI desktop.** Either positioned for a
   different use case (server / fleet), or actively deprecated for AI.
 - **🚫 Snub Round.** Distros Nova called out by name in the episode
