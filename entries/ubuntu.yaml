@@ -3,14 +3,14 @@ slug: ubuntu
 url: https://ubuntu.com
 category: tier-b
 category_label: Tier B
-tagline: 'Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA driver ships ~2 releases behind (especially Blackwell), Pro tier upsell printed in the terminal motd, desktop team skeleton crew. Most workable non-CachyOS path for plug-and-play CUDA — and that is the entire argument for it. Nova''s editorial verdict: switch away.'
+tagline: 'Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA stays on the 595 production branch (595.91.07 in updates on 2026-09-29) while NVIDIA''s 615 branch has been out since 2026-09-09, Pro tier upsell printed in the terminal motd, desktop team skeleton crew. Most workable non-CachyOS path for plug-and-play CUDA — and that is the entire argument for it. Nova''s editorial verdict: switch away.'
 tags:
 - 🟡 Deprecate (still workable)
 - Ubuntu 26.04 LTS
 - Largest CUDA ecosystem
 - ubuntu-drivers autoinstall
 - Snap forced
-- NVIDIA ~2 releases behind
+- NVIDIA branch behind
 - Pro motd upsell
 list: linux-for-ai
 added: '2026-04-30'

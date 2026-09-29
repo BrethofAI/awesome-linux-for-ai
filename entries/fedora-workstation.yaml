@@ -1,4 +1,4 @@
-name: Fedora Workstation 43
+name: Fedora Workstation 44
 slug: fedora-workstation
 url: https://fedoraproject.org/workstation
 category: tier-b
@@ -6,7 +6,7 @@ category_label: Tier B
 tagline: 'Best preview of where the Linux desktop is going — Wayland, PipeWire, HDR first. But SELinux fights AI tooling (containers blocked, mounts denied), NVIDIA needs RPMFusion + signed kernel modules + reboot dance, and 6-month release upgrades break things. Great desktop, not a great AI workstation. Cutting edge has a cost.'
 tags:
 - 🟡 With caveats
-- Fedora 43
+- Fedora 44
 - Wayland / PipeWire / HDR
 - SELinux friction
 - NVIDIA via RPMFusion

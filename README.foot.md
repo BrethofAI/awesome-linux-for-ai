@@ -19,9 +19,8 @@ Open an issue with:
 - A receipt for any factual claim (driver release date, packaging quirk, etc).
 
 Entries live as one YAML file per distro under `entries/`. This
-README is generated from them by [`scripts/gen_awesome_readme.py`](https://github.com/BrethofAI/brethof-website/blob/main/scripts/gen_awesome_readme.py)
-in the [`brethof-website`](https://github.com/BrethofAI/brethof-website)
-repo — so edit the YAML, not this README.
+README is generated from them by [`scripts/gen_awesome_readme.py`](scripts/gen_awesome_readme.py)
+— so edit the YAML, not this README.
 
 ## License
 

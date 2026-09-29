@@ -3,7 +3,7 @@
 
 tier-s: >
   The single distro built around the actual demands of a 2026 AI
-  workstation. NVIDIA driver updates land in hours, the kernel is
+  workstation. NVIDIA driver updates land within about a day, the kernel is
   tuned and rolling, packages are compiled for modern x86, and
   btrfs + snapshots give you a 30-second rollback when something
   goes sideways. If you only read one tier of this list, read this

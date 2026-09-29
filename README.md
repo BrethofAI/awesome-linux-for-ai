@@ -70,10 +70,10 @@ releases behind*, *btrfs default*, *DKMS dance*, *Snap forced*).
 
 ## Tier S
 
-The single distro built around the actual demands of a 2026 AI workstation. NVIDIA driver updates land in hours, the kernel is tuned and rolling, packages are compiled for modern x86, and btrfs + snapshots give you a 30-second rollback when something goes sideways. If you only read one tier of this list, read this one.
+The single distro built around the actual demands of a 2026 AI workstation. NVIDIA driver updates land within about a day, the kernel is tuned and rolling, packages are compiled for modern x86, and btrfs + snapshots give you a 30-second rollback when something goes sideways. If you only read one tier of this list, read this one.
 
 - **[CachyOS](https://cachyos.org)** — 🟢 Winner · BORE scheduler · x86-64-v3 · LTO/PGO/BOLT · NVIDIA hot updates · btrfs default · pacman + paru · KDE polish  
-  Nova's pick for best OS for local AI in 2026. linux-cachyos kernel with the BORE scheduler, x86-64-v3 compiled packages, LTO + PGO + BOLT optimisations, Limine bootloader, NVIDIA driver updates within hours, btrfs with snapshots on by default (30-second rollback). Same Arch wiki applies; pacman + paru is the friendliest install experience in this list. Gaming and AI both first-class.
+  Nova's pick for best OS for local AI in 2026. linux-cachyos kernel with the BORE scheduler, x86-64-v3 compiled packages, LTO + PGO + BOLT optimisations, Limine bootloader, NVIDIA driver updates within about a day (615.71.09: NVIDIA release 2026-09-09, CachyOS package 2026-09-10), btrfs with snapshots on by default (30-second rollback). Same Arch wiki applies; pacman + paru is the friendliest install experience in this list. Gaming and AI both first-class.
 
 ## Tier A
 
@@ -86,12 +86,12 @@ No "Winner" status, but if you are happy to spend a weekend configuring the mach
 
 These distros will run AI workloads, but each has a known friction point you will hit within the first week: SELinux + container permissions, an in-development desktop, or a snap-and-Pro upsell pipeline that ships with the system. Workable, with eyes open.
 
-- **[Fedora Workstation 43](https://fedoraproject.org/workstation)** — 🟡 With caveats · Fedora 43 · Wayland / PipeWire / HDR · SELinux friction · NVIDIA via RPMFusion · 6mo release breaks  
+- **[Fedora Workstation 44](https://fedoraproject.org/workstation)** — 🟡 With caveats · Fedora 44 · Wayland / PipeWire / HDR · SELinux friction · NVIDIA via RPMFusion · 6mo release breaks  
   Best preview of where the Linux desktop is going — Wayland, PipeWire, HDR first. But SELinux fights AI tooling (containers blocked, mounts denied), NVIDIA needs RPMFusion + signed kernel modules + reboot dance, and 6-month release upgrades break things. Great desktop, not a great AI workstation. Cutting edge has a cost.
-- **[Pop!_OS (COSMIC)](https://pop.system76.com)** — 🟡 Watch this space · COSMIC desktop · Rust DE · Ubuntu base · Snap + Pro inherited · Pre-production  
-  System76's Pop!_OS with the COSMIC desktop — Rust-based, ambitious, the only fully from-scratch desktop project in this category. Still in active development; breaking changes ship regularly, not production-grade in 2026. Ubuntu base underneath, so it inherits snap + Pro. Watch this space, but not yet worth betting your daily driver on it.
-- **[Ubuntu 26.04 LTS](https://ubuntu.com)** — 🟡 Deprecate (still workable) · Ubuntu 26.04 LTS · Largest CUDA ecosystem · ubuntu-drivers autoinstall · Snap forced · NVIDIA ~2 releases behind · Pro motd upsell  
-  Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA driver ships ~2 releases behind (especially Blackwell), Pro tier upsell printed in the terminal motd, desktop team skeleton crew. Most workable non-CachyOS path for plug-and-play CUDA — and that is the entire argument for it. Nova's editorial verdict: switch away.
+- **[Pop!_OS (COSMIC)](https://pop.system76.com)** — 🟡 Watch this space · COSMIC desktop · Rust DE · No snap (Flatpak) · NVIDIA ISO · Ubuntu 24.04 base  
+  System76's Pop!_OS with the COSMIC desktop — Rust-based, the only fully from-scratch desktop project in this category. COSMIC went stable with Pop!_OS 24.04 LTS on 2025-12-11. System76 strips snap (Flatpak is the default) and there is a dedicated NVIDIA ISO with the proprietary driver preinstalled. The caveat is the base: still Ubuntu 24.04 — the 26.04 rebase was promised ~2 weeks after Ubuntu 26.04 (April 2026) and on 2026-09-29 there is still no 26.04 ISO (the package repo is being built). Watch this space.
+- **[Ubuntu 26.04 LTS](https://ubuntu.com)** — 🟡 Deprecate (still workable) · Ubuntu 26.04 LTS · Largest CUDA ecosystem · ubuntu-drivers autoinstall · Snap forced · NVIDIA branch behind · Pro motd upsell  
+  Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA stays on the 595 production branch (595.91.07 in updates on 2026-09-29) while NVIDIA's 615 branch has been out since 2026-09-09, Pro tier upsell printed in the terminal motd, desktop team skeleton crew. Most workable non-CachyOS path for plug-and-play CUDA — and that is the entire argument for it. Nova's editorial verdict: switch away.
 
 ## Tier C
 
@@ -99,8 +99,8 @@ Positioned for a different use case — set-and-forget servers, identical-fleet 
 
 - **[Debian 13 (Trixie)](https://debian.org)** — 🔴 No for AI desktop · Debian 13 Trixie · Set-and-forget server · DKMS dance · Non-free + headers needed · 2-yr stable cycle  
   Best set-and-forget SERVER distro — rock-solid, conservative, runs forever. Wrong for an AI desktop in 2026. NVIDIA drivers live in non-free + contrib; DKMS silently fails unless you install kernel-headers first; the backports driver `550.163.01-4~bpo13+1` stopped compiling on kernel ≥ 6.19 as of 2026-03. 2-year stable release cycle = ancient packages — "from when AI meant chess engines."
-- **[Linux Mint](https://linuxmint.com)** — 🔴 Gateway only · Ubuntu LTS base · Cinnamon · CUDA cadence lag · Snap + Pro inherited  
-  Best Windows-refugee landing pad — Cinnamon is genuinely pleasant, casual desktop fine. But: Ubuntu LTS base means packages are old by design, Mint adds extra stability-verification delay on top of that, and for an AI workstation where CUDA moves every six weeks, you're always behind. Inherits Canonical's downstream snap + Pro decisions. Gateway only.
+- **[Linux Mint](https://linuxmint.com)** — 🔴 Gateway only · Ubuntu LTS base · Cinnamon · CUDA cadence lag · Snap blocked  
+  Best Windows-refugee landing pad — Cinnamon is genuinely pleasant, casual desktop fine. But: Ubuntu LTS base means packages are old by design (Mint 22.x still sits on 24.04; Mint 23 on 26.04 targets December 2026), Mint adds extra stability-verification delay on top of that, and for an AI workstation where CUDA moves every six weeks, you're always behind. (Mint does block snap by default — the one Canonical decision it refuses.) Gateway only.
 - **[NixOS 26.05](https://nixos.org)** — 🔴 Specific use only · NixOS 26.05 · Reproducible (flakes) · Steep Nix learning curve · Fleet-friendly · Genius + unpaid labour  
   Reproducibility gold standard — pin your CUDA version, kernel, and PyTorch build in a flake; your colleague clones the flake and gets the identical environment six months later. But: Nix language is a math proof, flakes still "experimental" after years, your Bluetooth headset becomes a packaging project, your bank's .deb installer becomes a packaging project. Specific use only: fleets of identical workstations, not a single desktop.
 
@@ -109,13 +109,13 @@ Positioned for a different use case — set-and-forget servers, identical-fleet 
 Distros Nova called out by name in the episode's Snub Round. Pretty, themed, or basically Arch with a coat of paint. Listed for completeness; not recommended for the AI workstation role.
 
 - **[Elementary OS](https://elementary.io)** — 🚫 Snubbed · Pantheon DE · Stuck in 2019  
-  Pantheon desktop is genuinely beautiful. Pretty but stuck in 2019 — old kernel, slow NVIDIA driver adoption, snap-everywhere. Not an AI workstation.
+  Pantheon desktop is genuinely beautiful. Pretty but stuck in 2019 — Ubuntu LTS base, old kernel, slow NVIDIA driver adoption. Not an AI workstation.
 - **[EndeavourOS](https://endeavouros.com)** — 🚫 Snubbed · Arch + installer wizard · That is the whole pitch  
   Arch with a friendly installer wizard. That is the whole pitch — same currency as Arch, same risks. If you want Arch, install Arch.
 - **[Garuda Linux](https://garudalinux.org)** — 🚫 Snubbed · Ricer-bait · Arch-based  
   Looks like a gaming peripheral exploded. Beautiful, ricer-bait — Arch-based with extreme defaults that mostly serve screenshot collections rather than a working AI rig.
-- **[Manjaro](https://manjaro.org)** — 🚫 Snubbed · Delayed AUR · Worst of both worlds  
-  Arch with a 2-week-delayed package window. Delayed AUR sync means constant breakage when you actually need a current package. Worst of both worlds.
+- **[Manjaro](https://manjaro.org)** — 🚫 Snubbed · Held-back repos vs AUR · Worst of both worlds  
+  Arch with its repos held back ~2 weeks — but the AUR tracks current Arch, so AUR packages build against libraries Manjaro does not have yet. Constant breakage when you actually need a current package. Worst of both worlds.
 - **[openSUSE Tumbleweed](https://www.opensuse.org)** — 🚫 Snubbed · Rolling (Tumbleweed) · YaST + zypper · Mostly in Germany  
   Still alive, I think — genuinely a fine rolling distro that nobody outside of Germany installs. YaST + zypper combination is solid; CUDA via NVIDIA's official repo. Just not a meaningful presence in the AI-distro conversation.
 - **[Zorin OS](https://zorin.com)** — 🚫 Snubbed · Windows cosplay  
@@ -142,9 +142,8 @@ Open an issue with:
 - A receipt for any factual claim (driver release date, packaging quirk, etc).
 
 Entries live as one YAML file per distro under `entries/`. This
-README is generated from them by [`scripts/gen_awesome_readme.py`](https://github.com/BrethofAI/brethof-website/blob/main/scripts/gen_awesome_readme.py)
-in the [`brethof-website`](https://github.com/BrethofAI/brethof-website)
-repo — so edit the YAML, not this README.
+README is generated from them by [`scripts/gen_awesome_readme.py`](scripts/gen_awesome_readme.py)
+— so edit the YAML, not this README.
 
 ## License
 

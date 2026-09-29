@@ -3,10 +3,10 @@ slug: manjaro
 url: https://manjaro.org
 category: tier-snub
 category_label: Snub Round
-tagline: 'Arch with a 2-week-delayed package window. Delayed AUR sync means constant breakage when you actually need a current package. Worst of both worlds.'
+tagline: 'Arch with its repos held back ~2 weeks — but the AUR tracks current Arch, so AUR packages build against libraries Manjaro does not have yet. Constant breakage when you actually need a current package. Worst of both worlds.'
 tags:
 - 🚫 Snubbed
-- Delayed AUR
+- Held-back repos vs AUR
 - Worst of both worlds
 list: linux-for-ai
 added: '2026-04-30'
