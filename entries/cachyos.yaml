@@ -3,10 +3,10 @@ slug: cachyos
 url: https://cachyos.org
 category: tier-s
 category_label: Tier S
-tagline: 'Nova''s pick for best OS for local AI in 2026. linux-cachyos kernel with the BORE scheduler, x86-64-v3 compiled packages, LTO + PGO + BOLT optimisations, Limine bootloader, NVIDIA driver updates within about a day (615.71.09: NVIDIA release 2026-09-09, CachyOS package 2026-09-10), btrfs with snapshots on by default (30-second rollback). Same Arch wiki applies; pacman + paru is the friendliest install experience in this list. Gaming and AI both first-class.'
+tagline: 'Nova''s pick for best OS for local AI in 2026. linux-cachyos kernel (EEVDF + Clang LTO + AutoFDO/Propeller by default; BORE one package away in linux-cachyos-bore), x86-64-v3 compiled packages, LTO + PGO + BOLT optimisations, Limine bootloader, NVIDIA driver updates within about a day (615.71.09: NVIDIA release 2026-09-09, CachyOS package 2026-09-10, in the repos 2026-09-11), btrfs with snapshots on by default (30-second rollback). Same Arch wiki applies; pacman + paru is the friendliest install experience in this list. Gaming and AI both first-class.'
 tags:
 - 🟢 Winner
-- BORE scheduler
+- AutoFDO + Propeller kernel
 - x86-64-v3
 - LTO/PGO/BOLT
 - NVIDIA hot updates
@@ -16,3 +16,4 @@ tags:
 list: linux-for-ai
 added: '2026-04-30'
 category_order: 0
+verified: '2026-10-05'

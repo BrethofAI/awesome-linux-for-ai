@@ -23,9 +23,9 @@ line.
 `pacman -S nvidia-container-toolkit`. `pacman -S cuda python-pytorch-cuda
 ollama-cuda`. On Ubuntu, Docker's own guide tells you to remove Ubuntu's
 Docker packages first, then runs eight commands to add Docker's key and
-repository; NVIDIA's container toolkit isn't in Ubuntu's repositories at
-all — five more commands to add NVIDIA's. And `apt install firefox` hands
-you a snap.
+repository; NVIDIA's container toolkit isn't in Ubuntu 26.04 LTS's
+repositories at all — five more commands to add NVIDIA's. And
+`apt install firefox` hands you a snap.
 
 **Snapshots of everything, automatically.** Every update on CachyOS takes
 a btrfs snapshot first, and the Limine boot menu lists them: if a driver
@@ -90,8 +90,8 @@ releases behind*, *btrfs default*, *DKMS dance*, *Snap forced*).
 
 The single distro built around the actual demands of a 2026 AI workstation. NVIDIA driver updates land within about a day, the kernel is tuned and rolling, packages are compiled for modern x86, and btrfs + snapshots give you a 30-second rollback when something goes sideways. If you only read one tier of this list, read this one.
 
-- **[CachyOS](https://cachyos.org)** — 🟢 Winner · BORE scheduler · x86-64-v3 · LTO/PGO/BOLT · NVIDIA hot updates · btrfs default · pacman + paru · KDE polish  
-  Nova's pick for best OS for local AI in 2026. linux-cachyos kernel with the BORE scheduler, x86-64-v3 compiled packages, LTO + PGO + BOLT optimisations, Limine bootloader, NVIDIA driver updates within about a day (615.71.09: NVIDIA release 2026-09-09, CachyOS package 2026-09-10), btrfs with snapshots on by default (30-second rollback). Same Arch wiki applies; pacman + paru is the friendliest install experience in this list. Gaming and AI both first-class.
+- **[CachyOS](https://cachyos.org)** — 🟢 Winner · AutoFDO + Propeller kernel · x86-64-v3 · LTO/PGO/BOLT · NVIDIA hot updates · btrfs default · pacman + paru · KDE polish  
+  Nova's pick for best OS for local AI in 2026. linux-cachyos kernel (EEVDF + Clang LTO + AutoFDO/Propeller by default; BORE one package away in linux-cachyos-bore), x86-64-v3 compiled packages, LTO + PGO + BOLT optimisations, Limine bootloader, NVIDIA driver updates within about a day (615.71.09: NVIDIA release 2026-09-09, CachyOS package 2026-09-10, in the repos 2026-09-11), btrfs with snapshots on by default (30-second rollback). Same Arch wiki applies; pacman + paru is the friendliest install experience in this list. Gaming and AI both first-class.
 
 ## Tier A
 
@@ -99,8 +99,8 @@ No "Winner" status, but the best choices outside of Tier S. Arch gives you the b
 
 - **[Arch Linux](https://archlinux.org)** — 🟡 Setup ritual · Rolling · AUR · Maximum transparency · Best wiki in Linux · pacman  
   Vanilla Arch. The 2020-era "breaks every Tuesday" reputation is outdated in 2026. Setup is a project, not an install — but configure everything yourself and you get maximum transparency, current packages, and the best wiki in Linux. AUR has a recipe for every CUDA / NVIDIA / ROCm release.
-- **[Pop!_OS (COSMIC)](https://pop.system76.com)** — 🟡 Older base · COSMIC desktop · Rust DE · No snap (Flatpak) · NVIDIA ISO · Own kernel + driver · Ubuntu 24.04 base  
-  System76's Pop!_OS with the COSMIC desktop — Rust-based, the only fully from-scratch desktop project in this category. COSMIC went stable with Pop!_OS 24.04 LTS on 2025-12-11. System76 strips snap (Flatpak is the default), ships a dedicated NVIDIA ISO with the proprietary driver preinstalled, and carries its own kernel and driver on top of the base (kernel 7.1.5 and NVIDIA 595.84 on 2026-09-29 — a newer kernel than Ubuntu 26.04 itself). The one trade-off is the base: still Ubuntu 24.04 — the 26.04 rebase was promised ~2 weeks after Ubuntu 26.04 (April 2026) and on 2026-09-29 there is still no 26.04 ISO (the package repo is being built).
+- **[Pop!_OS (COSMIC)](https://system76.com/pop)** — 🟡 Older base · COSMIC desktop · Rust DE · No snap (Flatpak) · NVIDIA ISO · Own kernel + driver · Ubuntu 24.04 base  
+  System76's Pop!_OS with the COSMIC desktop — Rust-based, the only fully from-scratch desktop project in this category. COSMIC went stable with Pop!_OS 24.04 LTS on 2025-12-11. System76 strips snap (Flatpak is the default), ships a dedicated NVIDIA ISO with the proprietary driver preinstalled, and carries its own kernel and driver on top of the base (kernel 7.1.5 and NVIDIA 595.84 on 2026-10-05 — a newer kernel than Ubuntu 26.04 itself, though a slightly older 595 driver than Ubuntu's 595.91.07). The one trade-off is the base: still Ubuntu 24.04 — the 26.04 rebase was promised ~2 weeks after Ubuntu 26.04 (April 2026) and on 2026-10-05 there is still no 26.04 ISO (the package repo is being built).
 
 ## Tier B
 
@@ -109,14 +109,14 @@ These distros will run AI workloads, but each has a known friction point you wil
 - **[Fedora Workstation 44](https://fedoraproject.org/workstation)** — 🟡 With caveats · Fedora 44 · Wayland / PipeWire / HDR · SELinux friction · NVIDIA via RPMFusion · 6mo release breaks  
   Best preview of where the Linux desktop is going — Wayland, PipeWire, HDR first. But SELinux fights AI tooling (containers blocked, mounts denied), NVIDIA needs RPMFusion + signed kernel modules + reboot dance, and 6-month release upgrades break things. Great desktop, not a great AI workstation. Cutting edge has a cost.
 - **[Ubuntu 26.04 LTS](https://ubuntu.com)** — 🟡 Deprecate (still workable) · Ubuntu 26.04 LTS · Largest CUDA ecosystem · ubuntu-drivers autoinstall · Snap forced · NVIDIA branch behind · Pro motd upsell  
-  Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA stays on the 595 production branch (595.91.07 in updates on 2026-09-29) while NVIDIA's 615 branch has been out since 2026-09-09, Pro tier upsell printed in the terminal motd, desktop team skeleton crew. The path every CUDA guide assumes — and that is the entire argument for it. Nova's editorial verdict: switch away.
+  Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one. But: Lambda Stack still stops at 24.04 (its installer refuses 26.04), `apt install firefox` gives you a snap, NVIDIA stays on the 595 production branch (595.91.07 in updates on 2026-10-05, while NVIDIA itself is at 595.104.02) and the 615 branch, out since 2026-09-09, has only reached -proposed (2026-09-29), Pro tier upsell printed in the terminal motd, desktop team skeleton crew. The path every CUDA guide assumes — and that is the entire argument for it. Nova's editorial verdict: switch away.
 
 ## Tier C
 
 Positioned for a different use case — set-and-forget servers, identical-fleet reproducibility, or Windows-refugee onboarding — and wrong for an AI workstation in 2026 specifically. Each one is still a great Linux distro for its actual job; just not this one.
 
 - **[Debian 13 (Trixie)](https://debian.org)** — 🔴 No for AI desktop · Debian 13 Trixie · Set-and-forget server · DKMS dance · Non-free + headers needed · 2-yr stable cycle  
-  Best set-and-forget SERVER distro — rock-solid, conservative, runs forever. Wrong for an AI desktop in 2026. NVIDIA drivers live in non-free + contrib; DKMS silently fails unless you install kernel-headers first; the backports driver `550.163.01-4~bpo13+1` stopped compiling on kernel ≥ 6.19 as of 2026-03. 2-year stable release cycle = ancient packages — "from when AI meant chess engines."
+  Best set-and-forget SERVER distro — rock-solid, conservative, runs forever. Wrong for an AI desktop in 2026. NVIDIA drivers live in non-free + contrib; DKMS silently fails unless you install kernel-headers first; stable and backports both still ship the 550.163.01 driver (`550.163.01-4~bpo13+1`), and it fails to build against the 7.2 kernel now in trixie-backports (Debian bug #1148283, 2026-09-18). 2-year stable release cycle = ancient packages — "from when AI meant chess engines."
 - **[Linux Mint](https://linuxmint.com)** — 🔴 Gateway only · Ubuntu LTS base · Cinnamon · CUDA cadence lag · Snap blocked  
   Best Windows-refugee landing pad — Cinnamon is genuinely pleasant, casual desktop fine. But: Ubuntu LTS base means packages are old by design (Mint 22.x still sits on 24.04; Mint 23 on 26.04 targets December 2026), Mint adds extra stability-verification delay on top of that, and for an AI workstation where CUDA moves every six weeks, you're always behind. (Mint does block snap by default — the one Canonical decision it refuses.) Gateway only.
 - **[NixOS 26.05](https://nixos.org)** — 🔴 Specific use only · NixOS 26.05 · Reproducible (flakes) · Steep Nix learning curve · Fleet-friendly · Genius + unpaid labour  
@@ -134,8 +134,8 @@ Distros Nova called out by name in the episode's Snub Round. Pretty, themed, or 
   Looks like a gaming peripheral exploded. Beautiful, ricer-bait — Arch-based with extreme defaults that mostly serve screenshot collections rather than a working AI rig.
 - **[Manjaro](https://manjaro.org)** — 🚫 Snubbed · Held-back repos vs AUR · Worst of both worlds  
   Arch with its repos held back ~2 weeks — but the AUR tracks current Arch, so AUR packages build against libraries Manjaro does not have yet. Constant breakage when you actually need a current package. Worst of both worlds.
-- **[openSUSE Tumbleweed](https://www.opensuse.org)** — 🚫 Snubbed · Rolling (Tumbleweed) · YaST + zypper · Mostly in Germany  
-  Still alive, I think — genuinely a fine rolling distro that nobody outside of Germany installs. YaST + zypper combination is solid; CUDA via NVIDIA's official repo. Just not a meaningful presence in the AI-distro conversation.
+- **[openSUSE Tumbleweed](https://www.opensuse.org)** — 🚫 Snubbed · Rolling (Tumbleweed) · zypper + Myrlyn · Mostly in Germany  
+  Still alive, I think — genuinely a fine rolling distro that nobody outside of Germany installs. zypper is solid (YaST is in maintenance mode, giving way to Agama, Myrlyn and Cockpit); CUDA via NVIDIA's official repo. Just not a meaningful presence in the AI-distro conversation.
 - **[Zorin OS](https://zorin.com)** — 🚫 Snubbed · Windows cosplay  
   Windows cosplay. Tries so hard to look like Windows that it forgets the point of switching.
 

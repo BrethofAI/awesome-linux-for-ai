@@ -3,7 +3,7 @@ slug: ubuntu
 url: https://ubuntu.com
 category: tier-b
 category_label: Tier B
-tagline: 'Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one; Lambda Stack drops in PyTorch in one apt line. But: `apt install firefox` gives you a snap, NVIDIA stays on the 595 production branch (595.91.07 in updates on 2026-09-29) while NVIDIA''s 615 branch has been out since 2026-09-09, Pro tier upsell printed in the terminal motd, desktop team skeleton crew. The path every CUDA guide assumes — and that is the entire argument for it. Nova''s editorial verdict: switch away.'
+tagline: 'Industry default — every CUDA guide on the internet assumes Ubuntu; `ubuntu-drivers autoinstall` works on day one. But: Lambda Stack still stops at 24.04 (its installer refuses 26.04), `apt install firefox` gives you a snap, NVIDIA stays on the 595 production branch (595.91.07 in updates on 2026-10-05, while NVIDIA itself is at 595.104.02) and the 615 branch, out since 2026-09-09, has only reached -proposed (2026-09-29), Pro tier upsell printed in the terminal motd, desktop team skeleton crew. The path every CUDA guide assumes — and that is the entire argument for it. Nova''s editorial verdict: switch away.'
 tags:
 - 🟡 Deprecate (still workable)
 - Ubuntu 26.04 LTS
@@ -15,3 +15,4 @@ tags:
 list: linux-for-ai
 added: '2026-04-30'
 category_order: 2
+verified: '2026-10-05'

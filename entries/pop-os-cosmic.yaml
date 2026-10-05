@@ -1,9 +1,9 @@
 name: Pop!_OS (COSMIC)
 slug: pop-os-cosmic
-url: https://pop.system76.com
+url: https://system76.com/pop
 category: tier-a
 category_label: Tier A
-tagline: 'System76''s Pop!_OS with the COSMIC desktop — Rust-based, the only fully from-scratch desktop project in this category. COSMIC went stable with Pop!_OS 24.04 LTS on 2025-12-11. System76 strips snap (Flatpak is the default), ships a dedicated NVIDIA ISO with the proprietary driver preinstalled, and carries its own kernel and driver on top of the base (kernel 7.1.5 and NVIDIA 595.84 on 2026-09-29 — a newer kernel than Ubuntu 26.04 itself). The one trade-off is the base: still Ubuntu 24.04 — the 26.04 rebase was promised ~2 weeks after Ubuntu 26.04 (April 2026) and on 2026-09-29 there is still no 26.04 ISO (the package repo is being built).'
+tagline: 'System76''s Pop!_OS with the COSMIC desktop — Rust-based, the only fully from-scratch desktop project in this category. COSMIC went stable with Pop!_OS 24.04 LTS on 2025-12-11. System76 strips snap (Flatpak is the default), ships a dedicated NVIDIA ISO with the proprietary driver preinstalled, and carries its own kernel and driver on top of the base (kernel 7.1.5 and NVIDIA 595.84 on 2026-10-05 — a newer kernel than Ubuntu 26.04 itself, though a slightly older 595 driver than Ubuntu''s 595.91.07). The one trade-off is the base: still Ubuntu 24.04 — the 26.04 rebase was promised ~2 weeks after Ubuntu 26.04 (April 2026) and on 2026-10-05 there is still no 26.04 ISO (the package repo is being built).'
 tags:
 - 🟡 Older base
 - COSMIC desktop
@@ -15,3 +15,4 @@ tags:
 list: linux-for-ai
 added: '2026-04-30'
 category_order: 1
+verified: '2026-10-05'

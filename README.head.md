@@ -23,9 +23,9 @@ line.
 `pacman -S nvidia-container-toolkit`. `pacman -S cuda python-pytorch-cuda
 ollama-cuda`. On Ubuntu, Docker's own guide tells you to remove Ubuntu's
 Docker packages first, then runs eight commands to add Docker's key and
-repository; NVIDIA's container toolkit isn't in Ubuntu's repositories at
-all — five more commands to add NVIDIA's. And `apt install firefox` hands
-you a snap.
+repository; NVIDIA's container toolkit isn't in Ubuntu 26.04 LTS's
+repositories at all — five more commands to add NVIDIA's. And
+`apt install firefox` hands you a snap.
 
 **Snapshots of everything, automatically.** Every update on CachyOS takes
 a btrfs snapshot first, and the Limine boot menu lists them: if a driver
