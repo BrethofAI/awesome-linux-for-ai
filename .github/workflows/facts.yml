@@ -1,0 +1,62 @@
+name: weekly-facts
+
+# Every week, read the live facts of every entry — name as GitHub has it now,
+# archived, latest release, licence, stars, where each homepage redirects —
+# and what changed since last week (scripts/facts.py). Runs on GitHub's
+# machines, so it does not depend on anyone's computer being on.
+#
+# It writes ONLY to the `facts` branch, never to main: the weekly review reads
+# the changes, and publishing (which merges facts.json into main) is a human
+# decision. The facts branch keeps one commit per week — the list's history.
+
+on:
+  schedule:
+    - cron: '0 21 * * 0'   # Sunday 21:00 UTC — ready before the Monday review
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-facts
+  cancel-in-progress: false
+
+jobs:
+  facts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml requests
+
+      - name: Last week's facts
+        run: git show origin/facts:facts.json > "$RUNNER_TEMP/prev.json" 2>/dev/null || echo '{}' > "$RUNNER_TEMP/prev.json"
+
+      - name: Read every entry's live facts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          python3 scripts/facts.py --prev "$RUNNER_TEMP/prev.json"
+          --out "$RUNNER_TEMP/facts.json" --changes "$RUNNER_TEMP/changes.json"
+          --summary "$RUNNER_TEMP/summary.md"
+
+      - name: Job summary
+        run: cat "$RUNNER_TEMP/summary.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Store on the facts branch (never main)
+        run: |
+          git config user.name  "BrethofAI"
+          git config user.email "hello@brethof.ai"
+          if git rev-parse -q --verify origin/facts >/dev/null; then
+            git switch -q -C facts origin/facts
+          else
+            git switch -q --orphan facts
+          fi
+          cp "$RUNNER_TEMP/facts.json" "$RUNNER_TEMP/changes.json" "$RUNNER_TEMP/summary.md" .
+          git add facts.json changes.json summary.md
+          git commit -q -m "facts: $(date -u +%F)" || echo "facts unchanged"
+          git push -q origin facts

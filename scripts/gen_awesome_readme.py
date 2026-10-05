@@ -28,6 +28,16 @@ except ImportError:
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+try:                                      # this week's facts (scripts/facts.py):
+    from facts import fact_line, load_facts   # stars, latest release, last push
+except ImportError:
+    def load_facts(root):
+        return {}
+
+    def fact_line(f):
+        return ""
+
 # tag -> badge rendering for this list (empty = render the tag verbatim)
 BADGES: dict[str, str] = {}
 
@@ -64,6 +74,7 @@ def badges(tags, mapping) -> str:
 def render() -> str:
     d = REPO_ROOT
     entries = load_entries(d)
+    facts = load_facts(d)
 
     cat_intros: dict = {}
     ci = d / "README.categories.yaml"
@@ -106,6 +117,9 @@ def render() -> str:
                 line += f" — {tag}"
             if tagline:
                 line += f"  \n  {tagline}"
+            fl = fact_line(facts.get(str(e.get("slug"))))
+            if fl:
+                line += f"  \n  <sub>{fl}</sub>"
             out.append(line)
         out.append("")
 
