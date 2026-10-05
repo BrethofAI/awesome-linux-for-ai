@@ -82,6 +82,10 @@ def render() -> str:
     if head.is_file():
         out.append(head.read_text(encoding="utf-8").rstrip() + "\n")
 
+    # LIST:START/END wrap the generated listing. brethof.ai builds this list's
+    # page from README.md: the text outside the markers verbatim, the entries
+    # inside them as a searchable catalog (brethof-website awesome_catalog.py).
+    out.append("<!-- LIST:START -->")
     out.append("## Contents\n")
     for c in ordered:
         out.append(f"- [{c['label']}](#{anchor(c['label'])}) ({len(c['items'])})")
@@ -104,6 +108,8 @@ def render() -> str:
                 line += f"  \n  {tagline}"
             out.append(line)
         out.append("")
+
+    out.append("<!-- LIST:END -->\n")
 
     foot = d / "README.foot.md"
     if foot.is_file():

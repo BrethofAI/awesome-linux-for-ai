@@ -75,6 +75,7 @@ To be on the list:
 The per-entry tag pills carry the specific reasons (e.g. *NVIDIA ~2
 releases behind*, *btrfs default*, *DKMS dance*, *Snap forced*).
 
+<!-- LIST:START -->
 ## Contents
 
 - [Tier S](#tier-s) (1)
@@ -137,6 +138,8 @@ Distros Nova called out by name in the episode's Snub Round. Pretty, themed, or 
   Still alive, I think — genuinely a fine rolling distro that nobody outside of Germany installs. YaST + zypper combination is solid; CUDA via NVIDIA's official repo. Just not a meaningful presence in the AI-distro conversation.
 - **[Zorin OS](https://zorin.com)** — 🚫 Snubbed · Windows cosplay  
   Windows cosplay. Tries so hard to look like Windows that it forgets the point of switching.
+
+<!-- LIST:END -->
 
 ## Related work
 
