@@ -1,0 +1,101 @@
+name: check-and-regenerate
+
+# Every entry is one YAML file under entries/; README.md is generated from
+# them by scripts/gen_awesome_readme.py. A pull request is checked here, and
+# a push to main regenerates the README, so a change merged on GitHub can
+# never leave the README describing a different list. (No schedule on
+# purpose: GitHub disables scheduled workflows after 60 quiet days, and
+# nothing here needs one — the weekly link check runs elsewhere.)
+
+on:
+  pull_request:
+    paths:
+      - 'entries/**'
+      - 'scripts/**'
+      - 'README.*'
+      - '.github/workflows/ci.yml'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml
+
+      - name: Every entry parses and has the required fields
+        run: |
+          python3 - <<'PY'
+          import sys, yaml, pathlib, datetime
+          need = ("name", "slug", "url", "category", "category_label", "tagline", "added")
+          bad = []
+          for p in sorted(pathlib.Path("entries").glob("*.yaml")):
+              if p.name.startswith("_"):
+                  continue
+              try:
+                  d = yaml.safe_load(p.read_text(encoding="utf-8"))
+              except yaml.YAMLError as e:
+                  bad.append(f"{p}: not valid YAML ({e})"); continue
+              if not isinstance(d, dict):
+                  bad.append(f"{p}: not a mapping"); continue
+              miss = [k for k in need if not d.get(k)]
+              if miss:
+                  bad.append(f"{p}: missing {', '.join(miss)}")
+              if d.get("slug") and d["slug"] != p.stem:
+                  bad.append(f"{p}: slug '{d['slug']}' does not match the file name")
+              try:
+                  datetime.date.fromisoformat(str(d.get("added", ""))[:10])
+              except ValueError:
+                  bad.append(f"{p}: added is not a YYYY-MM-DD date")
+              if not str(d.get("url", "")).startswith(("https://", "http://")):
+                  bad.append(f"{p}: url is not a web address")
+          print("\n".join(bad) or "all entries valid")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: README regenerates
+        run: python3 scripts/gen_awesome_readme.py
+
+      - name: Report README drift (informational)
+        if: github.event_name == 'pull_request'
+        run: |
+          if git diff --quiet README.md; then
+            echo "README.md is in sync with entries/."
+          else
+            echo "::notice::README.md differs from entries/. No action needed — main regenerates on merge."
+          fi
+
+  regenerate:
+    if: github.event_name == 'push'
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml
+      - run: python3 scripts/gen_awesome_readme.py
+      - name: Commit the regenerated README
+        run: |
+          git config user.name  "BrethofAI"
+          git config user.email "hello@brethof.ai"
+          if git diff --quiet README.md; then
+            echo "README.md already current."
+          else
+            git add README.md
+            git commit -m "chore: regenerate README from entries/"
+            git push
+          fi
