@@ -1,0 +1,9 @@
+# awesome-linux-for-ai
+
+> A curated tier list ranking Linux distributions specifically for running local AI workloads on personal hardware in 2026.
+
+The project is a static documentation list maintained by Brethof AI. It ranks distros based on NVIDIA driver currency, kernel updates, CUDA installation ease, and btrfs snapshot support. It serves as a companion reference to a specific video episode.
+
+## Docs
+
+- [awesome-linux-for-ai](https://raw.githubusercontent.com/BrethofAI/awesome-linux-for-ai/main/README.md): A curated tier list of Linux distros ranked for running local AI, focusing on driver currency and CUDA ergonomics.
