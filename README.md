@@ -11,9 +11,26 @@ for the editorial argument; use this list as the at-a-glance reference.
 
 Every "best Linux for AI" article in 2026 still says "Ubuntu, because
 that's what the tutorials assume." That was true in 2022. In 2026 the
-tutorials are written by AI agents, NVIDIA driver releases happen
-weekly, and the OS that ships kernel updates in hours wins. Ubuntu
-ships them two releases later.
+tutorials are written by AI agents, and three things decide an AI
+workstation.
+
+**The newest drivers and kernel, fast.** In September 2026 CachyOS ran
+kernel 7.2 and packaged NVIDIA's new 615 driver the day after it was
+released; Ubuntu 26.04 LTS sat on kernel 7.0 and the older 595 driver
+line.
+
+**One command, not a guide.** `pacman -S docker`.
+`pacman -S nvidia-container-toolkit`. `pacman -S cuda python-pytorch-cuda
+ollama-cuda`. On Ubuntu, Docker's own guide tells you to remove Ubuntu's
+Docker packages first, then runs eight commands to add Docker's key and
+repository; NVIDIA's container toolkit isn't in Ubuntu's repositories at
+all — five more commands to add NVIDIA's. And `apt install firefox` hands
+you a snap.
+
+**Snapshots of everything, automatically.** Every update on CachyOS takes
+a btrfs snapshot first, and the Limine boot menu lists them: if a driver
+update breaks something, reboot into yesterday's system. Ubuntu installs
+onto ext4 with GRUB — there is nothing to go back to.
 
 This list ranks distros by **the things that actually matter for
 running models on your own GPU**:
