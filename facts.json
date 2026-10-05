@@ -1,0 +1,145 @@
+{
+ "checked": "2026-10-05",
+ "entries": {
+  "arch-linux": {
+   "checked": "2026-10-05",
+   "name": "Arch Linux",
+   "url": "https://archlinux.org",
+   "web": {
+    "final": "https://archlinux.org/",
+    "status": 200,
+    "title": "Arch Linux"
+   }
+  },
+  "cachyos": {
+   "checked": "2026-10-05",
+   "name": "CachyOS",
+   "url": "https://cachyos.org",
+   "web": {
+    "final": "https://cachyos.org/",
+    "status": 200,
+    "title": "CachyOS â Blazingly Fast OS based on Arch Linux â CachyOS"
+   }
+  },
+  "debian": {
+   "checked": "2026-10-05",
+   "name": "Debian 13 (Trixie)",
+   "url": "https://debian.org",
+   "web": {
+    "final": "https://www.debian.org/",
+    "status": 200,
+    "title": "Debian -- The Universal Operating System"
+   }
+  },
+  "elementary-os": {
+   "checked": "2026-10-05",
+   "name": "Elementary OS",
+   "url": "https://elementary.io",
+   "web": {
+    "final": "https://elementary.io/",
+    "status": 200,
+    "title": "Thoughtful, capable, and ethical computing ⋅ elementary OS"
+   }
+  },
+  "endeavour-os": {
+   "checked": "2026-10-05",
+   "name": "EndeavourOS",
+   "url": "https://endeavouros.com",
+   "web": {
+    "final": "https://endeavouros.com/",
+    "status": 200,
+    "title": "EndeavourOS â A terminal-centric Arch-based Linux distribution with a vibrant and friendly community at its core."
+   }
+  },
+  "fedora-workstation": {
+   "checked": "2026-10-05",
+   "name": "Fedora Workstation 44",
+   "url": "https://fedoraproject.org/workstation",
+   "web": {
+    "final": "https://fedoraproject.org/workstation/",
+    "status": 200,
+    "title": "The leading Linux desktop | The Fedora Project"
+   }
+  },
+  "garuda-linux": {
+   "checked": "2026-10-05",
+   "name": "Garuda Linux",
+   "url": "https://garudalinux.org",
+   "web": {
+    "final": "https://garudalinux.org/",
+    "status": 200,
+    "title": "Garuda Linux"
+   }
+  },
+  "linux-mint": {
+   "checked": "2026-10-05",
+   "name": "Linux Mint",
+   "url": "https://linuxmint.com",
+   "web": {
+    "final": "https://linuxmint.com/",
+    "status": 200,
+    "title": "Home - Linux Mint"
+   }
+  },
+  "manjaro": {
+   "checked": "2026-10-05",
+   "name": "Manjaro",
+   "url": "https://manjaro.org",
+   "web": {
+    "final": "https://manjaro.org/",
+    "status": 200,
+    "title": "Manjaro – The Linux for People and Organizations"
+   }
+  },
+  "nixos": {
+   "checked": "2026-10-05",
+   "name": "NixOS 26.05",
+   "url": "https://nixos.org",
+   "web": {
+    "final": "https://nixos.org/",
+    "status": 200,
+    "title": "Nix & NixOS | Declarative builds and deployments"
+   }
+  },
+  "opensuse-tumbleweed": {
+   "checked": "2026-10-05",
+   "name": "openSUSE Tumbleweed",
+   "url": "https://www.opensuse.org",
+   "web": {
+    "final": "https://www.opensuse.org/",
+    "status": 200,
+    "title": "openSUSE - Free Linux operating systems for desktops, servers and containers"
+   }
+  },
+  "pop-os-cosmic": {
+   "checked": "2026-10-05",
+   "name": "Pop!_OS (COSMIC)",
+   "url": "https://system76.com/pop",
+   "web": {
+    "final": "https://system76.com/pop",
+    "status": 200,
+    "title": "Pop!_OS Linux Operating System | Secure, Customizable & Productive"
+   }
+  },
+  "ubuntu": {
+   "checked": "2026-10-05",
+   "name": "Ubuntu 26.04 LTS",
+   "url": "https://ubuntu.com",
+   "web": {
+    "final": "https://ubuntu.com/",
+    "status": 200,
+    "title": "Enterprise Open Source and Linux | Ubuntu"
+   }
+  },
+  "zorin-os": {
+   "checked": "2026-10-05",
+   "name": "Zorin OS",
+   "url": "https://zorin.com",
+   "web": {
+    "final": "https://zorin.com/",
+    "status": 200,
+    "title": "Zorin"
+   }
+  }
+ }
+}
