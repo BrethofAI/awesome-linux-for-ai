@@ -97,5 +97,14 @@ jobs:
           else
             git add README.md
             git commit -m "chore: regenerate README from entries/"
-            git push
+            git push || {
+              # Two merges seconds apart: main moved on while this ran. The newer
+              # push starts its own run, which regenerates from the newer entries.
+              git fetch -q origin main
+              if [ "$(git rev-parse origin/main)" != "$GITHUB_SHA" ]; then
+                echo "main moved on during this run; its own run regenerates the files."
+              else
+                exit 1
+              fi
+            }
           fi
