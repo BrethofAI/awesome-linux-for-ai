@@ -86,7 +86,9 @@ def gh_repo_of(e: dict) -> str | None:
 # ── GitHub, in batches ─────────────────────────────────────────────────────
 FIELDS = """nameWithOwner isArchived pushedAt stargazerCount description
   licenseInfo { spdxId }
-  latestRelease { tagName publishedAt }"""
+  latestRelease { tagName publishedAt }
+  releases(first: 30, orderBy: {field: CREATED_AT, direction: DESC}) {
+    nodes { tagName publishedAt isPrerelease isDraft } }"""
 
 
 def github(repos: list[str], token: str) -> dict[str, dict]:
@@ -116,6 +118,9 @@ def github(repos: list[str], token: str) -> dict[str, dict]:
                 "release": (d.get("latestRelease") or {}).get("tagName"),
                 "released": ((d.get("latestRelease") or {}).get("publishedAt") or "")[:10] or None,
                 "description": d.get("description"),
+                "releases": [(n["tagName"], (n.get("publishedAt") or "")[:10] or None)
+                             for n in ((d.get("releases") or {}).get("nodes") or [])
+                             if not n.get("isDraft") and not n.get("isPrerelease")],
             }
     return out
 
@@ -263,7 +268,14 @@ def main() -> int:
         c = {"name": e.get("name"), "url": e.get("url"), "checked": today.isoformat()}
         if refs[s]:
             c["github_ref"] = refs[s]
-            c["github"] = gh.get(refs[s], {"gone": True})
+            g = dict(gh.get(refs[s], {"gone": True}))
+            rels = g.pop("releases", [])
+            # one repo, several products: `release_tag` (a regex) picks this entry's own tag
+            # family — Kilo Code's v7.x, not its JetBrains plugin; Sentry's MCP, not its CLI
+            if e.get("release_tag") and not g.get("gone"):
+                hit = next(((t, d) for t, d in rels if re.search(str(e["release_tag"]), t)), (None, None))
+                g["release"], g["released"] = hit
+            c["github"] = g
         if s in webs:
             c["web"] = webs[s]
         cur[s] = c
