@@ -1,8 +1,8 @@
 {
- "checked": "2026-10-05",
+ "checked": "2026-10-12",
  "entries": {
   "arch-linux": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Arch Linux",
    "url": "https://archlinux.org",
    "web": {
@@ -12,7 +12,7 @@
    }
   },
   "cachyos": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "CachyOS",
    "url": "https://cachyos.org",
    "web": {
@@ -22,7 +22,7 @@
    }
   },
   "debian": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Debian 13 (Trixie)",
    "url": "https://debian.org",
    "web": {
@@ -32,7 +32,7 @@
    }
   },
   "elementary-os": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Elementary OS",
    "url": "https://elementary.io",
    "web": {
@@ -42,7 +42,7 @@
    }
   },
   "endeavour-os": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "EndeavourOS",
    "url": "https://endeavouros.com",
    "web": {
@@ -52,7 +52,7 @@
    }
   },
   "fedora-workstation": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Fedora Workstation 44",
    "url": "https://fedoraproject.org/workstation",
    "web": {
@@ -62,7 +62,7 @@
    }
   },
   "garuda-linux": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Garuda Linux",
    "url": "https://garudalinux.org",
    "web": {
@@ -72,7 +72,7 @@
    }
   },
   "linux-mint": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Linux Mint",
    "url": "https://linuxmint.com",
    "web": {
@@ -82,7 +82,7 @@
    }
   },
   "manjaro": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Manjaro",
    "url": "https://manjaro.org",
    "web": {
@@ -92,7 +92,7 @@
    }
   },
   "nixos": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "NixOS 26.05",
    "url": "https://nixos.org",
    "web": {
@@ -102,7 +102,7 @@
    }
   },
   "opensuse-tumbleweed": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "openSUSE Tumbleweed",
    "url": "https://www.opensuse.org",
    "web": {
@@ -112,7 +112,7 @@
    }
   },
   "pop-os-cosmic": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Pop!_OS (COSMIC)",
    "url": "https://system76.com/pop",
    "web": {
@@ -122,7 +122,7 @@
    }
   },
   "ubuntu": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Ubuntu 26.04 LTS",
    "url": "https://ubuntu.com",
    "web": {
@@ -132,7 +132,7 @@
    }
   },
   "zorin-os": {
-   "checked": "2026-10-05",
+   "checked": "2026-10-12",
    "name": "Zorin OS",
    "url": "https://zorin.com",
    "web": {
